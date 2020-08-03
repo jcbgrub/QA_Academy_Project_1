@@ -4,16 +4,16 @@ from application import app
 @app.route('/')
 @app.route('/main-lib')
 def home():
- return render_template('main-lib.html', title='My Library')
+	return render_template('main-lib.html', title='My Library')
 
- @app.route('/login')
+@app.route('/login')
 def home():
- return render_template('login.html', title='login')
+	return render_template('login.html', title='login')
 
- @app.route('/manage-lib')
+@app.route('/manage-lib')
 def home():
- return render_template('manage-lib', title='Manage my Entries')
+	return render_template('manage-lib', title='Manage my Entries')
 
- @app.route('/register)
+@app.route('/register)
 def home():
- return render_template('register.html', title='Register')
+	return render_template('register.html', title='Register')
