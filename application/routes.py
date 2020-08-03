@@ -14,6 +14,6 @@ def home():
 def home():
 	return render_template('manage-lib', title='Manage my Entries')
 
-@app.route('/register)
+@app.route('/register')
 def home():
 	return render_template('register.html', title='Register')
