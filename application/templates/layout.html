@@ -3,8 +3,8 @@
 	<body>
 	<div class=navbar>
 		{% if current_user.is_authenticated %}
-			<a href="{{ url_for('main_lib') }}">My Library</a>
-			<a href="{{ url_for('manage_lib') }}">Manage my Books</a>
+			<a href="{{ url_for('main-lib') }}">My Library</a>
+			<a href="{{ url_for('manage-lib') }}">Manage my Books</a>
 			<a href="{{ url_for('logout') }}">Logout</a>
 		{% else %}
 			<a href="{{ url_for('login') }}">Login</a>
