@@ -12,7 +12,7 @@ def login():
 
 @app.route('/manage_lib')
 def manage_lib():
-	return render_template('manage_lib', title='Manage my Entries')
+	return render_template('manage_lib.html', title='Manage my Entries')
 
 @app.route('/register')
 def register():
