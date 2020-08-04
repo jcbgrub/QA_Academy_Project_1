@@ -18,20 +18,12 @@ def main_lib_rate():
 		db.session.add(RatingForm)
 		db.session.commit()
 
-		return redirect(url_for('main_lib'))
+		return redirect(url_for('manage_lib'))
 
 	else:
 		print(form.errors)
 
 	return render_template('main_lib.html', title='My Library', form=form)
-
-@app.route('/login')
-def login():
-	return render_template('login.html', title='login')
-
-@app.route('/register')
-def register():
-	return render_template('register.html', title='Register')
 
 @app.route('/manage_lib', methods=['GET', 'POST'])
 def manage_lib():
@@ -56,3 +48,12 @@ def manage_lib():
 		print(form.errors)
 
 	return render_template('manage_lib.html', title='Manage my Entries', form=form)
+
+
+	@app.route('/login')
+def login():
+	return render_template('login.html', title='login')
+
+@app.route('/register')
+def register():
+	return render_template('register.html', title='Register')
