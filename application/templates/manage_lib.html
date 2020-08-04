@@ -1,5 +1,33 @@
 {% extends "layout.html" %}
-
 {% block body_content %}
-<h1>{{ 'This will be the  library mangement page' }}</h1>
+    <div class='form'>
+        <form method='POST' action=''>
+            {{ form.hidden_tag() }}
+            {{ form.first_name.label }}
+            {{ form.first_name }}
+            <br>
+            {{ form.last_name.label }}
+            {{ form.last_name }}
+            <br>
+            {{ form.title.label }}
+            {{ form.title }}
+            <br>
+            {{ form.pages.label }}
+            {{ form.pages }}
+            <br>
+            {{ form.pages.label }}
+            {{ form.pages }}
+            <br>
+            {{ form.language.label }}
+            {{ form.language }}
+            <br>
+            {{ form.comment.label }}
+            {{ form.comment }}
+            <br>
+            {{ form.date_read.label }}
+            {{ form.date_read }}
+            <br>
+            {{ form.submit }}
+        </form>
+    </div>
 {% endblock %}

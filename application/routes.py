@@ -24,7 +24,6 @@ def manage_lib():
 			first_name = form.first_name.data,
 			surname = form.last_name.data,
 			title = form.title.data,
-			content = form.content.data,
 			pages = form.data,
 			language = form.language.data,
 			comment = form.comment.data,
