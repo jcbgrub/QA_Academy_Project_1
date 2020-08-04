@@ -11,14 +11,13 @@ def main_lib_rate():
 		RatingForm = Rate(
 			rating = form.rating.data,
 			comment = form.comment.data,
-			date_read = form.date_read.data,
-			language = form.language.data
+			date_read = form.date_read.data
 		)
 
 		db.session.add(RatingForm)
 		db.session.commit()
 
-		return redirect(url_for('login'))
+		return redirect(url_for('main_lib'))
 
 	else:
 		print(form.errors)
