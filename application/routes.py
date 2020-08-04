@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for
 from application import app, db
 from application.models import book_lib, main_lib
-from application.forms import BookForm
+from application.forms import BookForm, RatingForm
 
 @app.route('/')
 @app.route('/main_lib', methods=['GET', 'POST'])
