@@ -5,7 +5,7 @@ from application.forms import BookForm, RatingForm
 
 @app.route('/')
 @app.route('/main_lib', methods=['GET', 'POST'])
-def main_lib_rate():
+def main_lib():
 	form = RatingForm()
 	if form.validate_on_submit():
 		RatingForm = Rate(
@@ -25,7 +25,7 @@ def main_lib_rate():
 	return render_template('main_lib.html', title='My Library', form=form)
 
 @app.route('/manage_lib', methods=['GET', 'POST'])
-def manage_lib_book():
+def manage_lib():
 	form = BookForm()
 	if form.validate_on_submit():
 		bookData = Books(
