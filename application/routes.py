@@ -6,7 +6,7 @@ from application.forms import BookForm
 @app.route('/')
 @app.route('/main_lib', methods=['GET', 'POST'])
 def main_lib_rate():
-	form = BookForm()
+	form = RatingForm()
 	if form.validate_on_submit():
 		RatingForm = Rate(
 			rating = form.rating.data,
@@ -45,7 +45,6 @@ def manage_lib_book():
 		print(form.errors)
 
 	return render_template('manage_lib.html', title='Manage my Entries', form=form)
-
 
 @app.route('/login')
 def login():
