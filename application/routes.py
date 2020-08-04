@@ -30,9 +30,9 @@ def manage_lib():
 	if form.validate_on_submit():
 		bookData = book_library(
 			first_name = form.first_name.data,
-			surname = form.last_name.data,
+			surname = form.surname.data,
 			title = form.title.data,
-			pages = form.data,
+			pages = form.pages.data,
 			language = form.language.data
 		)
 
