@@ -25,7 +25,7 @@ def main_lib_rate():
 	return render_template('main_lib.html', title='My Library', form=form)
 
 @app.route('/manage_lib', methods=['GET', 'POST'])
-def manage_lib():
+def manage_lib_book():
 	form = BookForm()
 	if form.validate_on_submit():
 		bookData = Books(
