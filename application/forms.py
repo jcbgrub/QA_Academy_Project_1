@@ -11,5 +11,5 @@ class BookForm(FlaskForm):
     pages = StringField('Pages',validators = [Length(min=2, max=30)])
     language = StringField('Language',validators = [DataRequired(),Length(min=2, max=25)])
     comment = StringField('Comments',validators = [Length(min=2, max=1000)])
-    date_read = IntegerField('Date read : ', validators = [NumberRange(min=1900/1/1,max=date.today())])
+    date_read = IntegerField('Date read', validators = [NumberRange(min=1900/1/1,max=date.today())])
     submit = SubmitField('Insert')

@@ -16,27 +16,27 @@ def login():
 def register():
 	return render_template('register.html', title='Register')
 
-	@app.route('/manage_lib', methods=['GET', 'POST'])
+@app.route('/manage_lib', methods=['GET', 'POST'])
 def manage_lib():
-    form = BookForm()
-    if form.validate_on_submit():
-        bookData = Books(
-            first_name = form.first_name.data,
-            surname = form.last_name.data,
-            title = form.title.data,
-            content = form.content.data,
-			pages = form..data,
+	form = BookForm()
+	if form.validate_on_submit():
+		bookData = Books(
+			first_name = form.first_name.data,
+			surname = form.last_name.data,
+			title = form.title.data,
+			content = form.content.data,
+			pages = form.data,
 			language = form.language.data,
 			comment = form.comment.data,
 			date_read = form.date_read.data
-        )
+		)
 
-        db.session.add(bookData)
-        db.session.commit()
+		db.session.add(bookData)
+		db.session.commit()
 
-        return redirect(url_for('main_lib'))
+		return redirect(url_for('main_lib'))
 
-    else:
-        print(form.errors)
+	else:
+		print(form.errors)
 
-    return render_template('manage_lib.html', title='Manage my Entries', form=form)
+	return render_template('manage_lib.html', title='Manage my Entries', form=form)
