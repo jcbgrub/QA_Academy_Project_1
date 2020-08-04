@@ -8,7 +8,7 @@ from application.forms import BookForm, RatingForm
 def main_lib():
 	form = RatingForm()
 	if form.validate_on_submit():
-		ratingData = Rate(
+		ratingData = main_library(
 			rating = form.rating.data,
 			comment = form.comment.data,
 			date_read = form.date_read.data
@@ -28,7 +28,7 @@ def main_lib():
 def manage_lib():
 	form = BookForm()
 	if form.validate_on_submit():
-		bookData = Books(
+		bookData = book_library(
 			first_name = form.first_name.data,
 			surname = form.last_name.data,
 			title = form.title.data,
