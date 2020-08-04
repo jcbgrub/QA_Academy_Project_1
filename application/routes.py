@@ -50,7 +50,7 @@ def manage_lib():
 	return render_template('manage_lib.html', title='Manage my Entries', form=form)
 
 
-	@app.route('/login')
+@app.route('/login')
 def login():
 	return render_template('login.html', title='login')
 
