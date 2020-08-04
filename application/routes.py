@@ -18,7 +18,7 @@ def main_lib_rate():
 		db.session.add(RatingForm)
 		db.session.commit()
 
-		return redirect(url_for('main_lib'))
+		return redirect(url_for('login'))
 
 	else:
 		print(form.errors)
