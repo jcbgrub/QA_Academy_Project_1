@@ -2,14 +2,14 @@
 
 {% block body_content %}
 <p>My library</p>
-{% for lib in manage_lib %}
+{% for lib in manage_library %}
 	<div>
 		<h3>{{ manage_lib.title }}</h3>
-		<p><b> - First name:</b>{{ manage_lib.first_name }}</p>
-        <p><b> - Last name:</b>{{ manage_lib.surname }}</p>
-        <p><b> - Last name:</b>{{ manage_lib.title }}</p>
-        <p><b> - Last name:</b>{{ manage_lib.pages }}</p>
-        <p><b> - Last name:</b>{{ manage_lib.language }}</p>
+		<p><b> - First name:</b>{{ lib.first_name }}</p>
+        <p><b> - Surname:</b>{{ lib.surname }}</p>
+        <p><b> - Title:</b>{{ lib.title }}</p>
+        <p><b> - Pages:</b>{{ lib.pages }}</p>
+        <p><b> - Language:</b>{{ lib.language }}</p>
 	</div>
 {% endfor %}
 {% endblock %}
