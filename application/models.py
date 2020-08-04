@@ -20,8 +20,6 @@ class book_lib(db.Model):
     title = db.Column(db.String(100), nullable=False, unique=True)
     pages = db.Column(db.Integer, nullable=False)
     language = db.Column(db.String(30), nullable=False)
-    comment = db.Column(db.String(500), nullable=False)
-    date_read = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     main_lib = db.relationship('main_lib', backref='bookcode', lazy=True)
 
 # Class for the main library 
@@ -29,4 +27,6 @@ class main_lib(db.Model):
     entry_id = db.Column(db.Integer, primary_key=True,autoincrement=True)
     user_id = db.Column(db.Integer,db.ForeignKey('users.user_id'))
     book_id = db.Column(db.Integer,db.ForeignKey('book_lib.book_id'))
-   
+    date_read = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    comment = db.Column(db.String(500), nullable=False)
+    rating = db.Column(db.Integer, nullable=False)

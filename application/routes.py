@@ -1,12 +1,29 @@
 from flask import render_template, redirect, url_for
 from application import app, db
-from application.models import book_lib
+from application.models import book_lib, main_lib
 from application.forms import BookForm
 
 @app.route('/')
-@app.route('/main_lib')
-def main_lib():
-	return render_template('main_lib.html', title='My Library')
+@app.route('/main_lib', methods=['GET', 'POST'])
+def main_lib_rate():
+	form = BookForm()
+	if form.validate_on_submit():
+		RatingForm = Rate(
+			rating = form.rating.data,
+			comment = form.comment.data,
+			date_read = form.date_read.data,
+			language = form.language.data
+		)
+
+		db.session.add(RatingForm)
+		db.session.commit()
+
+		return redirect(url_for('main_lib'))
+
+	else:
+		print(form.errors)
+
+	return render_template('main_lib.html', title='My Library', form=form)
 
 @app.route('/login')
 def login():
@@ -26,8 +43,8 @@ def manage_lib():
 			title = form.title.data,
 			pages = form.data,
 			language = form.language.data,
-			comment = form.comment.data,
-			date_read = form.date_read.data
+			# comment = form.comment.data,
+			# date_read = form.date_read.data
 		)
 
 		db.session.add(bookData)
