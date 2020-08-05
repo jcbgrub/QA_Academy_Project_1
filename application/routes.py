@@ -5,8 +5,6 @@ from application import app, db, bcrypt
 from application.models import book_library, main_library
 from application.forms import BookForm, RatingForm, RegistrationForm, LoginForm
 
-
-
 # # Route to the login page
 @app.route('/')
 @app.route("/login", methods=['GET', 'POST'])
@@ -94,7 +92,7 @@ def register():
     return render_template('register.html', title='Register', form=form)
 
 # Route to update book entries
-@app.route('/update_lib',, methods=['GET', 'POST']))
+@app.route('/update_lib', methods=['GET', 'POST'])
 @login_required
 def update_lib():
     form = UpdateBookForm()
@@ -111,7 +109,7 @@ def update_lib():
 
     return render_template('update_lib.html', title='Update Entries', form=form)
 
-
+# logout route
 @app.route("/logout")
 def logout():
     logout_user()
