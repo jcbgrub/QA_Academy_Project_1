@@ -30,6 +30,8 @@ class UpdateBookForm(FlaskForm):
     submit = SubmitField('Update')
 
 class RegistrationForm(FlaskForm):
+    first_name = StringField('First Name',validators=[DataRequired(),Length(min=2, max=30)])
+    last_name = StringField('Last Name', validators=[DataRequired(),Length(min=3, max=30)])
     email = StringField('Email', validators = [DataRequired(),Email()])
     password = PasswordField('Password',validators = [DataRequired(),])
     confirm_password = PasswordField('Confirm Password',validators = [DataRequired(),EqualTo('password')])

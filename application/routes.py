@@ -78,16 +78,21 @@ def rate():
 # Route to register a new user
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('main_lib'))
     form = RegistrationForm()
     if form.validate_on_submit():
         hash_pw = bcrypt.generate_password_hash(form.password.data)
 
-        user = Users(email=form.email.data, password=hash_pw)
+        user = Users(
+        first_name=form.first_name.data,
+        last_name=form.last_name.data,
+        email=form.email.data,
+        password=hash_pw)
 
         db.session.add(user)
         db.session.commit()
-
-        return redirect(url_for('post'))
+        return redirect(url_for('new_entry'))
     return render_template('register.html', title='Register', form=form)
 
 # Route to update book entries
@@ -112,6 +117,7 @@ def update_lib():
 
 # logout route
 @app.route("/logout")
+@login_required
 def logout():
     logout_user()
     return redirect(url_for('login'))
