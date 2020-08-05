@@ -26,7 +26,7 @@ def login():
 @app.route('/main_lib')
 @login_required
 def main_lib():
-	BookData=book_library.query.all().join(main_library).query.all()
+	BookData=book_library.query.all()
 	return render_template('main_lib.html', title='My Library')
 
 # Route to making new book entries
