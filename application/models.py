@@ -15,7 +15,7 @@ class Users(db.Model, UserMixin):
     first_name = db.Column(db.String(30), nullable=False)
     last_name = db.Column(db.String(30), nullable=False)
     email = db.Column(db.String(150), nullable=False, unique=True)
-    password = db.Column(db.String(50), nullable=False)
+    password = db.Column(db.String(250), nullable=False)
     main_lib = db.relationship('main_library', backref='owner', lazy=True)
     
     def __repr__(self):
