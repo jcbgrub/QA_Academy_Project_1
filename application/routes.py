@@ -105,7 +105,10 @@ def update_lib():
 	elif request.method == 'GET':
 		form.first_name.data = current_user.first_name
 		form.last_name.data = current_user.last_name        
-		form.email.data = current_user.email        
+		form.surname = current_user.surname.data
+		form.title = current_user.title.data
+		form.pages = current_user.pages.data
+		form.language = current_user.language.data
 	return render_template('update_lib.html', title='update_lib', form=form)
 
 # logout route
