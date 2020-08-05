@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for, request
 from flask_login import login_user, current_user, logout_user, login_required
 from application import app, db, bcrypt
-from application.models import book_library, main_library, users
+from application.models import book_library, main_library, Users
 from application.forms import BookForm, RatingForm, RegistrationForm, LoginForm
 
 # # Route to the login page
