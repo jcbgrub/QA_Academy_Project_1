@@ -4,7 +4,7 @@ from datetime import datetime
 # Name of the database: litary_db
 # Name of testing database: literay_testing_db
 
-# 
+# loging manager
 @login_manager.user_loader
 def load_user(id):
     return Users.query.get(int(id))
