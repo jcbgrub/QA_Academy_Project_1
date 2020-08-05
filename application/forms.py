@@ -1,7 +1,8 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, IntegerField
-from wtforms.validators import DataRequired, Length, NumberRange
+from wtforms import StringField, SubmitField, IntegerField, PasswordField, BooleanField
+from wtforms.validators import DataRequired, Length, NumberRange, Email, EqualTo, ValidationError
 from datetime import date
+from application.models import Users
 
 # Insert a new book into the library form
 class BookForm(FlaskForm):
@@ -18,3 +19,30 @@ class RatingForm(FlaskForm):
     comment = StringField('Comments',validators = [Length(min=1, max=1000)])
     date_read = IntegerField('Date read', validators = [NumberRange(min=1900/1/1,max=date.today())])
     submit = SubmitField('Insert')
+
+# updateing books
+class UpdateBookForm(FlaskForm):
+    first_name = StringField('First Name', validators = [DataRequired(),Length(min=1, max=30)])
+    surname = StringField('Surname',validators = [DataRequired(),Length(min=1, max=30)])
+    title = StringField('Title',validators = [DataRequired(),Length(min=1, max=30)])
+    pages = StringField('Pages',validators = [Length(min=1, max=30)])
+    language = StringField('Language',validators = [DataRequired(),Length(min=1, max=25)])
+    submit = SubmitField('Update')
+
+class RegistrationForm(FlaskForm):
+    email = StringField('Email', validators = [DataRequired(),Email()])
+    password = PasswordField('Password',validators = [DataRequired(),])
+    confirm_password = PasswordField('Confirm Password',validators = [DataRequired(),EqualTo('password')])
+    submit = SubmitField('Register')
+
+    def validate_email(self, email):
+        user = Users.query.filter_by(email=email.data).first()
+
+        if user:
+            raise ValidationError('Email already registered')
+
+class LoginForm(FlaskForm):
+    email = StringField('Email',validators=[DataRequired(),Email()])
+    password = PasswordField('Password',validators=[DataRequired()])
+    remember = BooleanField('Remember Me')
+    submit = SubmitField('Login')

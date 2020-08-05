@@ -5,18 +5,48 @@
             {{ form.hidden_tag() }}
             {{ form.first_name.label }}
             {{ form.first_name }}
+                {% if form.first_name.errors %}
+                <div class="error">
+                    {% for error in form.first_name.errors %}
+                    <span>{{ error }}</span>
+                </div>
+                {% endif %}
             <br>
             {{ form.surname.label }}
             {{ form.surname }}
+            {% if form.surname.errors %}
+            <div class="error">
+                {% for error in form.surname.errors %}
+                <span>{{ error }}</span>
+            </div>
+            {% endif %}
             <br>
             {{ form.title.label }}
             {{ form.title }}
+            {% if form.title.errors %}
+            <div class="error">
+                {% for error in form.title.errors %}
+                <span>{{ error }}</span>
+            </div>
+            {% endif %}
             <br>
             {{ form.pages.label }}
             {{ form.pages }}
+            {% if form.pages.errors %}
+            <div class="error">
+                {% for error in form.pages.errors %}
+                <span>{{ error }}</span>
+            </div>
+            {% endif %}
             <br>
             {{ form.language.label }}
             {{ form.language }}
+            {% if form.language.errors %}
+            <div class="error">
+                {% for error in form.language.errors %}
+                <span>{{ error }}</span>
+            </div>
+            {% endif %}
             <br>
             {{ form.submit }}
         </form>

@@ -5,12 +5,30 @@
             {{ form.hidden_tag() }}
             {{ form.rating.label }}
             {{ form.rating }}
+            {% if form.rating.errors %}
+            <div class="error">
+                {% for error in form.rating.errors %}
+                <span>{{ error }}</span>
+            </div>
+            {% endif %}
             <br>
             {{ form.comment.label }}
             {{ form.comment }}
+            {% if form.comment.errors %}
+            <div class="error">
+                {% for error in form.comment.errors %}
+                <span>{{ error }}</span>
+            </div>
+            {% endif %}
             <br>
             {{ form.date_read.label }}
             {{ form.date_read }}
+            {% if form.date_read.errors %}
+            <div class="error">
+                {% for error in form.date_read.errors %}
+                <span>{{ error }}</span>
+            </div>
+            {% endif %}
             <br>
             {{ form.submit }}
         </form>

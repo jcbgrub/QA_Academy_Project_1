@@ -1,3 +1,9 @@
 {
     "python.pythonPath": "/Users/Jacob/Documents/Python_Projects/increment/venv/bin/python3"
 }
+{
+    "python.linting.pylintArgs": [
+        "--load-plugins",
+        "pylint-flask"
+    ]
+}

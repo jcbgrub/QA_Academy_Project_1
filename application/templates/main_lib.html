@@ -2,6 +2,7 @@
 
 {% block body_content %}
 <p>My library</p>
+{% if posts %}
 {% for lib in manage_library %}
 	<div>
 		<h3>{{ manage_lib.title }}</h3>
@@ -12,6 +13,11 @@
         <p><b> - Language:</b>{{ lib.language }}</p>
 	</div>
 {% endfor %}
+{% else %}
+    <!-- display a message indicating that there are no posts --> 
+    <p>There are no books in your library</p>
+<!-- end the 'if' statement -->
+{% endif %}
 {% endblock %}
 
 

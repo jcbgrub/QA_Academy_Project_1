@@ -2,12 +2,16 @@
 <html>
 	<body>
 	<div class=navbar>
-			<a href="{{ url_for('main_lib') }}">My Library</a>	
-			<a href="{{ url_for('new_entry') }}">Enter new Books</a>
-			<a href="{{ url_for('update_lib') }}">Manage my Books</a>
-			<a href="{{ url_for('rate') }}">Rate Books</a>
-			<a href="{{ url_for('login') }}">Login</a>
-			<a href="{{ url_for('register') }}">Register</a>
+		{% if current_user.is_authenticated %}
+		<a href="{{ url_for('main_lib') }}">My Library</a>	
+		<a href="{{ url_for('new_entry') }}">Enter new Books</a>
+		<a href="{{ url_for('update_lib') }}">Manage my Books</a>
+		<a href="{{ url_for('rate') }}">Rate Books</a>
+		<a href="{{ url_for('logout') }}">Logout</a>
+		{% else %}
+		<a href="{{ url_for('login') }}">Login</a>
+		<a href="{{ url_for('register') }}">Register</a>
+		{% endif %}
 	</div>
 	{% block body_content %}{% endblock %}
 	</body>
