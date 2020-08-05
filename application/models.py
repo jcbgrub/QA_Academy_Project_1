@@ -8,7 +8,7 @@ from datetime import datetime
 
 # Class for the user table
 class Users(db.Model, UserMixin):
-    user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     first_name = db.Column(db.String(30), nullable=False)
     last_name = db.Column(db.String(30), nullable=False)
     email = db.Column(db.String(150), nullable=False, unique=True)
@@ -24,21 +24,21 @@ class Users(db.Model, UserMixin):
 
 # Class for book library 
 class book_library(db.Model):
-    book_id = db.Column(db.Integer, primary_key=True,autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True,autoincrement=True)
     first_name = db.Column(db.String(30), nullable=False)
     surname = db.Column(db.String(30), nullable=False)
     title = db.Column(db.String(100), nullable=False, unique=True)
     pages = db.Column(db.Integer, nullable=False)
     language = db.Column(db.String(30), nullable=False)
     date_added = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     main_lib = db.relationship('main_library', backref='bookcode', lazy=True)
 
 # Class for the main library 
 class main_library(db.Model):
-    entry_id = db.Column(db.Integer, primary_key=True,autoincrement=True)
-    user_id = db.Column(db.Integer,db.ForeignKey('users.user_id'))
-    book_id = db.Column(db.Integer,db.ForeignKey('book_library.book_id'))
+    id = db.Column(db.Integer, primary_key=True,autoincrement=True)
+    user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
+    book_id = db.Column(db.Integer,db.ForeignKey('book_library.id'))
     date_read = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     comment = db.Column(db.String(500), nullable=False)
     rating = db.Column(db.Integer, nullable=False)
