@@ -41,7 +41,7 @@ def new_entry():
 			title = form.title.data,
 			pages = form.pages.data,
 			language = form.language.data,
-			owner=current_user
+			b_owner=current_user
 		)
 		db.session.add(bookData)
 		db.session.commit()
@@ -60,7 +60,7 @@ def rate():
 			rating = form.rating.data,
 			comment = form.comment.data,
 			date_read = form.date_read.data,
-			owner=current_user
+			b_owner=current_user
 		)
 		db.session.add(RatingForm)
 		db.session.commit()
