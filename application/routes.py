@@ -40,7 +40,8 @@ def new_entry():
 			surname = form.surname.data,
 			title = form.title.data,
 			pages = form.pages.data,
-			language = form.language.data
+			language = form.language.data,
+			owner=current_user
 		)
 		db.session.add(bookData)
 		db.session.commit()
@@ -58,7 +59,8 @@ def rate():
 		ratingData = main_library(
 			rating = form.rating.data,
 			comment = form.comment.data,
-			date_read = form.date_read.data
+			date_read = form.date_read.data,
+			owner=current_user
 		)
 		db.session.add(RatingForm)
 		db.session.commit()
@@ -112,3 +114,7 @@ def update_lib():
 def logout():
 	logout_user()
 	return redirect(url_for('login'))
+
+
+# delete function
+# dont forget 			owner=current_user

@@ -9,6 +9,7 @@
             <div class="error">
                 {% for error in form.rating.errors %}
                 <span>{{ error }}</span>
+                {% endfor %}
             </div>
             {% endif %}
             <br>
@@ -18,6 +19,7 @@
             <div class="error">
                 {% for error in form.comment.errors %}
                 <span>{{ error }}</span>
+                {% endfor %}
             </div>
             {% endif %}
             <br>
@@ -27,6 +29,7 @@
             <div class="error">
                 {% for error in form.date_read.errors %}
                 <span>{{ error }}</span>
+                {% endfor %}
             </div>
             {% endif %}
             <br>
