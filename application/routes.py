@@ -104,7 +104,6 @@ def update_lib():
 		return redirect(url_for('update_lib'))
 	elif request.method == 'GET':
 		form.first_name.data = current_user.first_name
-		form.last_name.data = current_user.last_name        
 		form.surname = current_user.surname.data
 		form.title = current_user.title.data
 		form.pages = current_user.pages.data
