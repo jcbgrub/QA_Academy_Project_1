@@ -97,8 +97,10 @@ def update_lib():
     form = UpdateBookForm()
     if form.validate_on_submit():
         current_user.first_name = form.first_name.data
-        current_user.last_name = form.last_name.data
-        current_user.email = form.email.data
+        current_user.surname = form.surname.data
+        current_user.title = form.title.data
+        current_user.pages = form.pages.data
+        current_user.language = form.language.data
         db.session.commit()
         return redirect(url_for('update_lib'))
     elif request.method == 'GET':
