@@ -27,7 +27,7 @@ def login():
 @login_required
 def main_lib():
 	BookData=book_library.query.all()
-	return render_template('main_lib.html', title='My Library')
+	return render_template('main_lib.html', title='main_lib')
 
 # Route to making new book entries
 @app.route('/new_entry', methods=['GET', 'POST'])
@@ -47,7 +47,7 @@ def new_entry():
 		return redirect(url_for('main_lib'))
 	else:
 		print(form.errors)
-	return render_template('new_entry.html', title='New Entries', form=form)
+	return render_template('new_entry.html', title='new_entry', form=form)
 
 # route to rating books
 @app.route('/rate', methods=['GET', 'POST'])
@@ -65,7 +65,7 @@ def rate():
 		return redirect(url_for('main_lib'))
 	else:
 		print(form.errors)
-	return render_template('rate.html', title='Rating', form=form)
+	return render_template('rate.html', title='rate', form=form)
 
 # Route to register a new user
 @app.route('/register', methods=['GET', 'POST'])
@@ -85,7 +85,7 @@ def register():
 		db.session.add(user)
 		db.session.commit()
 		return redirect(url_for('new_entry'))
-	return render_template('register.html', title='Register', form=form)
+	return render_template('register.html', title='register', form=form)
 
 # Route to update book entries
 @app.route('/update_lib', methods=['GET', 'POST'])
@@ -104,7 +104,7 @@ def update_lib():
 		form.first_name.data = current_user.first_name
 		form.last_name.data = current_user.last_name        
 		form.email.data = current_user.email        
-	return render_template('update_lib.html', title='Update Entries', form=form)
+	return render_template('update_lib.html', title='update_lib', form=form)
 
 # logout route
 @app.route("/logout")
