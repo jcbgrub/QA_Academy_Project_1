@@ -13,7 +13,7 @@ def login():
 # Route to the main library, joining the book and ratings tables.
 @app.route('/main_lib')
 def main_lib():
-	BookData=book_library.query.all().join(main_library)
+	BookData=book_library.query.all().join(main_library).query.all()
 	return render_template('main_lib.html', title='My Library')
 
 # Route to making new book entries

@@ -4,6 +4,8 @@ from datetime import datetime
 # Name of testing database: literay_testing_db
 
 # Class for the user table
+
+
 class users(db.Model):
     user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     first_name = db.Column(db.String(30), nullable=False)
@@ -12,9 +14,11 @@ class users(db.Model):
     password = db.Column(db.String(50), nullable=False)
     main_lib = db.relationship('main_library', backref='owner', lazy=True)
 
-# Class for book library 
+# Class for book library
+
+
 class book_library(db.Model):
-    book_id = db.Column(db.Integer, primary_key=True,autoincrement=True)
+    book_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     first_name = db.Column(db.String(30), nullable=False)
     surname = db.Column(db.String(30), nullable=False)
     title = db.Column(db.String(100), nullable=False, unique=True)
@@ -22,11 +26,13 @@ class book_library(db.Model):
     language = db.Column(db.String(30), nullable=False)
     main_lib = db.relationship('main_library', backref='bookcode', lazy=True)
 
-# Class for the main library 
+# Class for the main library
+
+
 class main_library(db.Model):
-    entry_id = db.Column(db.Integer, primary_key=True,autoincrement=True)
-    user_id = db.Column(db.Integer,db.ForeignKey('users.user_id'))
-    book_id = db.Column(db.Integer,db.ForeignKey('book_library.book_id'))
+    entry_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
+    book_id = db.Column(db.Integer, db.ForeignKey('book_library.book_id'))
     date_read = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     comment = db.Column(db.String(500), nullable=False)
     rating = db.Column(db.Integer, nullable=False)
