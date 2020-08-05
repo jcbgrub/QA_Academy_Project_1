@@ -4,10 +4,7 @@ from datetime import datetime
 # Name of the database: litary_db
 # Name of testing database: literay_testing_db
 
-# loging manager
-@login_manager.user_loader
-def load_user(id):
-    return Users.query.get(int(id))
+
 
 # Class for the user table
 class Users(db.Model, UserMixin):
@@ -45,3 +42,8 @@ class main_library(db.Model):
     date_read = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     comment = db.Column(db.String(500), nullable=False)
     rating = db.Column(db.Integer, nullable=False)
+
+    # loging manager
+@login_manager.user_loader
+def load_user(id):
+    return Users.query.get(int(id))
