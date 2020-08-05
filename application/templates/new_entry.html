@@ -9,6 +9,7 @@
                 <div class="error">
                     {% for error in form.first_name.errors %}
                     <span>{{ error }}</span>
+                    {% endfor %}
                 </div>
                 {% endif %}
             <br>
@@ -18,6 +19,7 @@
             <div class="error">
                 {% for error in form.surname.errors %}
                 <span>{{ error }}</span>
+                {% endfor %}
             </div>
             {% endif %}
             <br>
@@ -27,6 +29,7 @@
             <div class="error">
                 {% for error in form.title.errors %}
                 <span>{{ error }}</span>
+                {% endfor %}
             </div>
             {% endif %}
             <br>
@@ -36,6 +39,7 @@
             <div class="error">
                 {% for error in form.pages.errors %}
                 <span>{{ error }}</span>
+                {% endfor %}
             </div>
             {% endif %}
             <br>
@@ -45,6 +49,7 @@
             <div class="error">
                 {% for error in form.language.errors %}
                 <span>{{ error }}</span>
+                {% endfor %}
             </div>
             {% endif %}
             <br>
