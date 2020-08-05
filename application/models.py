@@ -13,7 +13,8 @@ class Users(db.Model, UserMixin):
     last_name = db.Column(db.String(30), nullable=False)
     email = db.Column(db.String(150), nullable=False, unique=True)
     password = db.Column(db.String(250), nullable=False)
-    main_lib = db.relationship('book_library', backref='owner', lazy=True)
+    book_lib = db.relationship('book_library', backref='b_owner', lazy=True)
+    main_lib = db.relationship('main_library', backref='m_owner', lazy=True)
     
     def __repr__(self):
         return ''.join([
@@ -42,6 +43,7 @@ class main_library(db.Model):
     date_read = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     comment = db.Column(db.String(500), nullable=False)
     rating = db.Column(db.Integer, nullable=False)
+    
 
     # loging manager
 @login_manager.user_loader
