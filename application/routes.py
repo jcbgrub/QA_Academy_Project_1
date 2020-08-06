@@ -93,21 +93,22 @@ def register():
 @app.route('/update_lib', methods=['GET', 'POST'])
 @login_required
 def update_lib():
+	books = book_library.query.filter_by(id = id).first()
 	form = UpdateBookForm()
 	if form.validate_on_submit():
-		current_user.first_name = form.first_name.data
-		current_user.surname = form.surname.data
-		current_user.title = form.title.data
-		current_user.pages = form.pages.data
-		current_user.language = form.language.data
+		books.first_name = form.first_name.data
+		books.surname = form.surname.data
+		books.title = form.title.data
+		books.pages = form.pages.data
+		books.language = form.language.data
 		db.session.commit()
 		return redirect(url_for('update_lib'))
 	elif request.method == 'GET':
-		form.first_name.data = current_user.first_name
-		form.surname = current_user.surname.data
-		form.title = current_user.title.data
-		form.pages = current_user.pages.data
-		form.language = current_user.language.data
+		form.first_name.data = books.first_name
+		form.surname = books.surname.data
+		form.title = books.title.data
+		form.pages = books.pages.data
+		form.language = books.language.data
 	return render_template('update_lib.html', title='update_lib', form=form)
 
 # logout route
