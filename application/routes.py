@@ -109,7 +109,7 @@ def update_lib(book_id):
 		form.title = book.title
 		form.pages = book.pages
 		form.language = book.language
-	return render_template('update_lib.html', title='Update my library', form=book)
+	return render_template('update_lib.html', title='Update my library', form=form)
 
 # logout route
 @app.route("/logout")
