@@ -16,7 +16,6 @@ class BookForm(FlaskForm):
 # Insert a new rating into the library 
 class RatingForm(FlaskForm):
     selecttitle = SelectField("Choose the title of the book",
-                        blank_text='Choose the title of the book',
                         query_factory=lambda: book_library.query.all(),
                         allow_blank=False)
     rating =StringField('Rate 1 to 6',validators = [NumberRange(min=1,max=6)])
