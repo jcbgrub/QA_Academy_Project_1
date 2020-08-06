@@ -10,8 +10,8 @@
 						{% for error in form.first_name.errors %}
 								<span>{{ error }}</span>
 						{% endfor %}
-						{% endif %}
 					</div>
+					{% endif %}
 			{{ form.surname.label }}
 			{{ form.surname }}
 			{% if form.surname.errors %}
@@ -19,8 +19,8 @@
 						{% for error in form.surname.errors %}
 								<span>{{ error }}</span>
 						{% endfor %}    
-						{% endif %}
 					</div>
+					{% endif %}
 			{{ form.title.label }}
 			{{ form.title }}
 			{% if form.title.errors %}
@@ -28,8 +28,8 @@
 						{% for error in form.title.errors %}
 								<span>{{ error }}</span>
 						{% endfor %}
-						{% endif %}
 					</div>
+					{% endif %}
 			{{ form.pages.label }}
 			{{ form.pages }}
 			{% if form.pages.errors %}
@@ -37,8 +37,8 @@
 						{% for error in form.pages.errors %}
 								<span>{{ error }}</span>
 						{% endfor %}
-						{% endif %}
 					</div>
+					{% endif %}
 			{{ form.language.label }}
 			{{ form.language }}
 			{% if form.language.errors %}
@@ -46,8 +46,8 @@
 						{% for error in form.language.errors %}
 								<span>{{ error }}</span>
 						{% endfor %}
-						{% endif %}
 					</div>
+					{% endif %}
 			<p>
 			{{ form.submit }}
 			</p>
