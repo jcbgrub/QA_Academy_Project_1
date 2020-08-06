@@ -127,7 +127,7 @@ def delete_book(book_id):
 		rate = main_library.query.filter_by(book_id = book_id).first() 
 		if rate:
 			db.session.delete(rate)
-		book = book_library.query.filter_by(id = book_id).all()
+		book = book_library.query.filter_by(id = book_id).first()
 		db.session.delete(book)
 		db.session.commit
 		return redirect(url_for("main_lib"))
