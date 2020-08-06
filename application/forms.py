@@ -20,7 +20,6 @@ class RatingForm(FlaskForm):
     rating =IntegerField('Rate 1 to 6',validators = [NumberRange(min=1,max=6)])
     comment = StringField('Comments',validators = [Length(min=1, max=1000)])
     date_read = DateField('Date read format:yyyy-m-d', validators = [DateRange(min=datetime(1999, 1, 1),max=datetime(3000, 1, 1))])
-    # date_read = DateField('Date read format:yyyy-m-d', validators = [DateRange(min=datetime(1999, 1, 1),max=datetime(date.today()))])
     submit = SubmitField('Insert Review')
 
 # updateing books
