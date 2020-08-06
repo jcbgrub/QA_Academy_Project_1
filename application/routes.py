@@ -122,7 +122,7 @@ def logout():
 	return redirect(url_for('login'))
 
 #  remove books
-@app.route('/delete_book/<book_id>')
+@app.route('/delete_book/<book_id>', methods=["GET", "POST"])
 @login_required
 def delete_book(book_id):
 	if current_user.is_authenticated:
