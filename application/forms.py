@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, IntegerField, PasswordField, BooleanField, SelectField
+from wtforms import StringField, SubmitField, IntegerField, PasswordField, BooleanField, SelectField, DateTimeField
 from wtforms.validators import DataRequired, Length, NumberRange, Email, EqualTo
 from datetime import date
 from application.models import Users, book_library,main_library
@@ -18,7 +18,7 @@ class RatingForm(FlaskForm):
     select_title = SelectField("Choose the title of the book",choices=[])
     rating =IntegerField('Rate 1 to 6',validators = [NumberRange(min=1,max=6)])
     comment = StringField('Comments',validators = [Length(min=1, max=1000)])
-    date_read = IntegerField('Date read format:yyyy-mm-dd', validators = [NumberRange(min=1900-01-01,max=date.today())])
+     date_read = DateTimeField('Date read format:yyyy-m-d', validators = [DateRange(min=datetime(1999, 1, 1),max=datetime(date.totay.()])
     submit = SubmitField('Insert Review')
 
 # updateing books
