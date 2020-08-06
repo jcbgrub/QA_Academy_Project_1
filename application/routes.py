@@ -102,7 +102,7 @@ def update_lib(book_id):
 		book.pages = form.pages.data
 		book.language = form.language.data
 		db.session.commit()
-	return redirect(url_for('update_lib'))
+		return redirect(url_for('update_lib'))
 	elif request.method == 'GET':
 		form.first_name = book.first_name.data
 		form.surname = book.surname.data
