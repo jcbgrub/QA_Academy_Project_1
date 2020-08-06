@@ -57,6 +57,7 @@ def rate():
 	form = RatingForm()
 	if form.validate_on_submit():
 		ratingData = main_library(
+			select = form.select.data,
 			rating = form.rating.data,
 			comment = form.comment.data,
 			date_read = form.date_read.data,

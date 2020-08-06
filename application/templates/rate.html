@@ -3,6 +3,16 @@
     <div class='form'>
         <form method='POST' action=''>
             {{ form.hidden_tag() }}
+            {{ form.select.label }}
+            {{ form.select }}
+            {% if form.select.errors %}
+            <div class="error">
+                {% for error in form.select.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+            {% endif %}
+            <br>          
             {{ form.rating.label }}
             {{ form.rating }}
             {% if form.rating.errors %}
