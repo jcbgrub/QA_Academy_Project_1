@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block body_content %}
 <p>My library</p>
-{% if posts %}
+{% if book_library %}
 {% for lib in book_library %}
     <div>
         <h3>{{ book_library.title }}</h3>
@@ -17,9 +17,7 @@
     
 {% endfor %}
 {% else %}
-    <!-- display a message indicating that there are no posts --> 
     <p>There are no books in your library</p>
-<!-- end the 'if' statement -->
 {% endif %}
 {% endblock %}
 
