@@ -44,7 +44,6 @@ class main_library(db.Model):
     comment = db.Column(db.String(500), nullable=False)
     rating = db.Column(db.Integer, nullable=False)
     
-
     # loging manager
 @login_manager.user_loader
 def load_user(id):
