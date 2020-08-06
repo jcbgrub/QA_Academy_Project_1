@@ -11,9 +11,7 @@
 		- Title:</b>{{ lib.title }}
 		- Pages:</b>{{ lib.pages }}
 		- Language:</b>{{ lib.language }}
-		</p>
-		<p>
-	   <a href="{{ url_for('update_lib', book_id=lib.id) }}"> edit this book</a>
+		<a href="{{ url_for('update_lib', book_id=lib.id) }}"> Edit book</a>
 		</p>
 	</div>
 	

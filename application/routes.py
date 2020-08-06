@@ -27,7 +27,7 @@ def login():
 @login_required
 def main_lib():
 	BookData=book_library.query.all()
-	return render_template('main_lib.html', title='main_lib',book_library=BookData)
+	return render_template('main_lib.html', title='My Library',book_library=BookData)
 
 # Route to making new book entries
 @app.route('/new_entry', methods=['GET', 'POST'])
@@ -102,7 +102,7 @@ def update_lib(book_id):
 		book.pages = form.pages.data
 		book.language = form.language.data
 		db.session.commit()
-		return redirect(url_for('update_lib'))
+	return redirect(url_for('update_lib'))
 	elif request.method == 'GET':
 		form.first_name = book.first_name.data
 		form.surname = book.surname.data
