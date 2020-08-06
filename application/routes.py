@@ -126,7 +126,7 @@ def delete_book(book_id):
 	if current_user.is_authenticated:
 		rate = main_library.query.filter_by(book_id = book_id).first() 
 		for r in rate:
-			db.session.delete(rate)
+			db.session.delete(r)
 		book = book_library.query.filter_by(id = book_id).first()
 		db.session.delete(book)
 		db.session.commit
