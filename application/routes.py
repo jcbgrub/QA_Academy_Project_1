@@ -128,15 +128,11 @@ def delete_book(book_id):
 	if current_user.is_authenticated:
 		rate = main_library.query.filter_by(book_id = book_id).all() 
 		book = book_library.query.filter_by(id = book_id).all()
-		print("--------------------------------------------",rate,"-----------------------------------------")
 		if rate:
 			for r in rate:
 				db.session.delete(r)
-		print("--------------------------------------------",book,"-----------------------------------------")
-		# for entry in book:
 		for entry in book:
 			db.session.delete(entry)
-		print("--------------------------------------------",book,"-----------------------------------------")
 		db.session.commit()
 		return redirect(url_for('main_lib'))
 
