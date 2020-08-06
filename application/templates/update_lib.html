@@ -1,56 +1,56 @@
 {% extends "layout.html" %}
 {% block body_content %}
-    <h1>{{ current_user.first_name }} {{ current_user.last_name }} Update {{ form.surname.label }}'s book here</h1>
-    <div class='form'>
-        <form method='POST' action=''>
-            {{ form.first_name.label }}
-            {{ form.first_name }}
-            {% if form.first_name.errors %}
-                <div class="error">
-                        {% for error in form.first_name.errors %}
-                                <span>{{ error }}</span>
-                        {% endfor %}
-                </div>
-            {% endif %}
-            {{ form.surname.label }}
-            {{ form.surname }}
-            {% if form.surname.errors %}
-                <div class="error">
-                        {% for error in form.surname.errors %}
-                                <span>{{ error }}</span>
-                        {% endfor %}
-                </div>
-            {% endif %}
-            {{ form.title.label }}
-            {{ form.title }}
-            {% if form.title.errors %}
-                <div class="error">
-                        {% for error in form.title.errors %}
-                                <span>{{ error }}</span>
-                        {% endfor %}
-                </div>
-            {% endif %}
-            {{ form.pages.label }}
-            {{ form.pages }}
-            {% if form.pages.errors %}
-                <div class="error">
-                        {% for error in form.pages.errors %}
-                                <span>{{ error }}</span>
-                        {% endfor %}
-                </div>
-            {% endif %}
-            {{ form.language.label }}
-            {{ form.language }}
-            {% if form.language.errors %}
-                <div class="error">
-                        {% for error in form.language.errors %}
-                                <span>{{ error }}</span>
-                        {% endfor %}
-                </div>
-            {% endif %}
-            <p>
-            {{ form.submit }}
-            </p>
-        </form>
-    </div>
+	<h1>{{ current_user.first_name }} you can update {{ form.surname }}'s book here:</h1>
+	<div class='form'>
+		<form method='POST' action=''>
+			{{ form.first_name.label }}
+			{{ form.first_name }}
+			{% if form.first_name.errors %}
+			<div class="error">
+						{% for error in form.first_name.errors %}
+								<span>{{ error }}</span>
+						{% endfor %}
+						{% endif %}
+					</div>
+			{{ form.surname.label }}
+			{{ form.surname }}
+			{% if form.surname.errors %}
+			<div class="error">
+						{% for error in form.surname.errors %}
+								<span>{{ error }}</span>
+						{% endfor %}    
+						{% endif %}
+					</div>
+			{{ form.title.label }}
+			{{ form.title }}
+			{% if form.title.errors %}
+				<div class="error">
+						{% for error in form.title.errors %}
+								<span>{{ error }}</span>
+						{% endfor %}
+						{% endif %}
+					</div>
+			{{ form.pages.label }}
+			{{ form.pages }}
+			{% if form.pages.errors %}
+				<div class="error">
+						{% for error in form.pages.errors %}
+								<span>{{ error }}</span>
+						{% endfor %}
+						{% endif %}
+					</div>
+			{{ form.language.label }}
+			{{ form.language }}
+			{% if form.language.errors %}
+				<div class="error">
+						{% for error in form.language.errors %}
+								<span>{{ error }}</span>
+						{% endfor %}
+						{% endif %}
+					</div>
+			<p>
+			{{ form.submit }}
+			</p>
+		</form>
+	</div>
 {% endblock %}
