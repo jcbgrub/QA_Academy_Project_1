@@ -55,6 +55,8 @@ def new_entry():
 @login_required
 def rate():
 	form = RatingForm()
+	choices = book_library.query.filter_by(title=book_library.title).all()
+	form.select_title.choices=choices
 	if form.validate_on_submit():
 		ratingData = main_library(
 			select_title = form.select_title.data,
@@ -103,7 +105,7 @@ def update_lib(book_id):
 		book.pages = form.pages.data
 		book.language = form.language.data
 		db.session.commit()
-		return redirect(url_for('update_lib',book_id=book_id))
+		return redirect(url_for('main_lib',book_id=book_id))
 	elif request.method == 'GET':
 		form.first_name.data = book.first_name
 		form.surname.data = book.surname
@@ -128,6 +130,7 @@ def delete_book(book_id):
 		if rate:
 			db.session.delete(rate)
 		book = book_library.query.filter_by(id = book_id).first()
+		print("--------------------------------------------",book,"-----------------------------------------")
 		db.session.delete(book)
 		db.session.commit
 		return redirect(url_for('new_entry'))
