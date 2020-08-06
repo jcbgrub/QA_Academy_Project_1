@@ -93,7 +93,6 @@ def register():
 @app.route('/update_lib', methods=['GET', 'POST'])
 @login_required
 def update_lib():
-	book
 	form = UpdateBookForm()
 	if form.validate_on_submit():
 		book_library.first_name = form.first_name.data
