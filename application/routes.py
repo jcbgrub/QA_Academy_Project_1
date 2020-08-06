@@ -127,15 +127,16 @@ def logout():
 def delete_book(book_id):
 	if current_user.is_authenticated:
 		rate = main_library.query.filter_by(book_id = book_id).all() 
+		book = book_library.query.filter_by(id = book_id).all()
 		print("--------------------------------------------",rate,"-----------------------------------------")
 		if rate:
 			for r in rate:
 				db.session.delete(r)
-		book = book_library.query.filter_by(id = book_id).all()
 		print("--------------------------------------------",book,"-----------------------------------------")
 		for entry in book:
-			db.session.delete(entry)
-			db.session.commit
+				db.session.delete(entry)
+				db.session.commit
+		print("--------------------------------------------",book,"-----------------------------------------")
 		return redirect(url_for('new_entry'))
 
 # delete function
