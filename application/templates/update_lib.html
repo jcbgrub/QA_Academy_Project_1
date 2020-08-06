@@ -6,7 +6,7 @@
 			{{ form.hidden_tag() }}
 		<div class="form-group">
 			{{ form.first_name.label }}
-			{{ form.first_name(size=32) }}
+			{{ form.first_name }}
 			{% if form.first_name.errors %}
 			<div class="error">
 				{% for error in form.first_name.errors %}
