@@ -3,11 +3,11 @@
     <div class='form'>
         <form method='POST' action=''>
             {{ form.hidden_tag() }}
-            {{ form.select.label }}
-            {{ form.select }}
-            {% if form.select.errors %}
+            {{ form.select_title.label }}
+            {{ form.select_title }}
+            {% if form.select_title.errors %}
             <div class="error">
-                {% for error in form.select.errors %}
+                {% for error in form.select_title.errors %}
                 <span>{{ error }}</span>
                 {% endfor %}
             </div>
