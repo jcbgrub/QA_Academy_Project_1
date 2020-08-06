@@ -103,7 +103,7 @@ def update_lib(book_id):
 		book.pages = form.pages.data
 		book.language = form.language.data
 		db.session.commit()
-		return redirect(url_for('update_lib',id=book_id))
+		return redirect(url_for('update_lib',book_id=book_id))
 	elif request.method == 'GET':
 		form.first_name.data = book.first_name
 		form.surname.data = book.surname
@@ -124,9 +124,9 @@ def logout():
 @login_required
 def delete_book(book_id):
 	if current_user.is_authenticated:
-		# rate = main_library.query.filter_by(book_id = book_id).first() 
-		# if rate:
-		# 	db.session.delete(rate)
+		rate = main_library.query.filter_by(book_id = book_id).first() 
+		if rate:
+			db.session.delete(rate)
 		book = book_library.query.filter_by(id = book_id).first()
 		db.session.delete(book)
 		db.session.commit
