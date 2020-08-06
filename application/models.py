@@ -4,8 +4,6 @@ from datetime import datetime
 # Name of the database: litary_db
 # Name of testing database: literay_testing_db
 
-
-
 # Class for the user table
 class Users(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
