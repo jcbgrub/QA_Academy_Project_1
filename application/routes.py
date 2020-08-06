@@ -135,7 +135,7 @@ def delete_book(book_id):
 				db.session.commit
 		print("--------------------------------------------",book,"-----------------------------------------")
 		# for entry in book:
-		db.session.delete(entry)
+		db.session.delete(book)
 		db.session.commit
 		print("--------------------------------------------",book,"-----------------------------------------")
 		return redirect(url_for('main_lib'))
