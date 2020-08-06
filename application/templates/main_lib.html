@@ -3,21 +3,23 @@
 <p>My library</p>
 {% if book_library %}
 {% for lib in book_library %}
-    <div>
-        <h3>{{ book_library.title }}</h3>
-        <p><b> - First name:</b>{{ lib.first_name }}</p>
-        <p><b> - Surname:</b>{{ lib.surname }}</p>
-        <p><b> - Title:</b>{{ lib.title }}</p>
-        <p><b> - Pages:</b>{{ lib.pages }}</p>
-        <p><b> - Language:</b>{{ lib.language }}</p>
-    <p>
-       <a href="{{ url_for('update_lib', book_id=lib.id) }}"> edit this book</a>
-    </p>
-    </div>
-    
+	<div>
+		<h3>{{ book_library.title }}</h3>
+		<p> 
+		- First name:</b>{{ lib.first_name }}
+		- Surname:</b>{{ lib.surname }}
+		- Title:</b>{{ lib.title }}
+		- Pages:</b>{{ lib.pages }}
+		- Language:</b>{{ lib.language }}
+		</p>
+		<p>
+	   <a href="{{ url_for('update_lib', book_id=lib.id) }}"> edit this book</a>
+		</p>
+	</div>
+	
 {% endfor %}
 {% else %}
-    <p>There are no books in your library</p>
+	<p>There are no books in your library</p>
 {% endif %}
 {% endblock %}
 
