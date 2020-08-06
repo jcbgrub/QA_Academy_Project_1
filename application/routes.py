@@ -125,7 +125,7 @@ def logout():
 def delete_book(book_id):
 	if current_user.is_authenticated:
 		book = book_library.query.filter_by(id = book_id).first()
-		db.session.delete()
+		db.session.delete(book_library)
 		db.session.commit
 		return redirect(url_for("main_lib"))
 
