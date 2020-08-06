@@ -2,15 +2,19 @@
 {% block body_content %}
 <p>My library</p>
 {% if posts %}
-{% for lib in manage_library %}
-	<div>
-		<h3>{{ manage_lib.title }}</h3>
-		<p><b> - First name:</b>{{ lib.first_name }}</p>
+{% for lib in book_library %}
+    <div>
+        <h3>{{ book_library.title }}</h3>
+        <p><b> - First name:</b>{{ lib.first_name }}</p>
         <p><b> - Surname:</b>{{ lib.surname }}</p>
         <p><b> - Title:</b>{{ lib.title }}</p>
         <p><b> - Pages:</b>{{ lib.pages }}</p>
         <p><b> - Language:</b>{{ lib.language }}</p>
-	</div>
+    <p>
+       <a href="{{ url_for('update_lib', book_id=lib.id) }}"> edit this book</a>
+    </p>
+    </div>
+    
 {% endfor %}
 {% else %}
     <!-- display a message indicating that there are no posts --> 
