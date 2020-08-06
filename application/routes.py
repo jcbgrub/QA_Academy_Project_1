@@ -129,11 +129,13 @@ def delete_book(book_id):
 		rate = main_library.query.filter_by(book_id = book_id).all() 
 		print("--------------------------------------------",rate,"-----------------------------------------")
 		if rate:
-			db.session.delete(rate)
+			for r in rate:
+				db.session.delete(r)
 		book = book_library.query.filter_by(id = book_id).all()
 		print("--------------------------------------------",book,"-----------------------------------------")
-		db.session.delete(book)
-		db.session.commit
+			for entry in book:
+				db.session.delete(entry)
+				db.session.commit
 		return redirect(url_for('new_entry'))
 
 # delete function
