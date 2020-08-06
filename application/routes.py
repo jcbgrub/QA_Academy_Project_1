@@ -138,7 +138,7 @@ def delete_book(book_id):
 				db.session.delete(entry)
 				db.session.commit
 		print("--------------------------------------------",book,"-----------------------------------------")
-		return redirect(url_for('new_entry'))
+		return redirect(url_for('main_lib'))
 
 # delete function
 # dont forget 			owner=current_user
