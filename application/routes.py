@@ -57,7 +57,7 @@ def rate():
 	form = RatingForm()
 	if form.validate_on_submit():
 		ratingData = main_library(
-			selecttitle = form.selecttitle.data,
+			select_title = form.select_title.data,
 			rating = form.rating.data,
 			comment = form.comment.data,
 			date_read = form.date_read.data,
@@ -118,6 +118,16 @@ def update_lib(book_id):
 def logout():
 	logout_user()
 	return redirect(url_for('login'))
+
+#  remove books
+@app.route("/product/delete/<book_id>")
+@login_required
+def delete_book(book_id):
+	if current_user.is_authenticated:
+		book = book_library.query.filter_by(id = book_id).first()
+		db.session.delete(product)
+		db.session.commit
+		return redirect(url_for("main_lib"))
 
 
 # delete function
