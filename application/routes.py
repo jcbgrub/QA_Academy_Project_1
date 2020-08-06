@@ -133,9 +133,9 @@ def delete_book(book_id):
 				db.session.delete(r)
 		book = book_library.query.filter_by(id = book_id).all()
 		print("--------------------------------------------",book,"-----------------------------------------")
-			for entry in book:
-				db.session.delete(entry)
-				db.session.commit
+		for entry in book:
+			db.session.delete(entry)
+			db.session.commit
 		return redirect(url_for('new_entry'))
 
 # delete function
