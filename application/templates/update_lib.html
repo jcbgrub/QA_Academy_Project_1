@@ -3,7 +3,6 @@
     <h1>{{ current_user.first_name }} {{ current_user.last_name }} Update {{ form.surname.label }}'s book here</h1>
     <div class='form'>
         <form method='POST' action=''>
-            <!-- {{ form.hidden_tag() }} -->
             {{ form.first_name.label }}
             {{ form.first_name }}
             {% if form.first_name.errors %}
