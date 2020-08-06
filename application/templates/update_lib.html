@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block body_content %}
-	<h1>{{ current_user.first_name }} you can update {{ form.surname }}'s book here:</h1>
+	<h1>{{ current_user.first_name }} you can update your books here:</h1>
 	<div class='form'>
 		<form method='POST' action=''>
 			{{ form.hidden_tag() }}
