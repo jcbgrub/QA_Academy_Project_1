@@ -120,7 +120,7 @@ def logout():
 	return redirect(url_for('login'))
 
 #  remove books
-@app.route("/delete_book/<book_id>")
+@app.route("/main_lib/<book_id>")
 @login_required
 def delete_book(book_id):
 	if current_user.is_authenticated:
@@ -128,7 +128,6 @@ def delete_book(book_id):
 		db.session.delete(book_library)
 		db.session.commit
 		return redirect(url_for("main_lib"))
-
 
 # delete function
 # dont forget 			owner=current_user
