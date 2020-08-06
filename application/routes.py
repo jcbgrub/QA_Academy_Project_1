@@ -134,7 +134,7 @@ def delete_book(book_id):
 				db.session.delete(r)
 				db.session.commit
 		print("--------------------------------------------",book,"-----------------------------------------")
-		for entry in book:
+		# for entry in book:
 				db.session.delete(entry)
 				db.session.commit
 		print("--------------------------------------------",book,"-----------------------------------------")
