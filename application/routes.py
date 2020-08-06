@@ -104,11 +104,11 @@ def update_lib(book_id):
 		db.session.commit()
 		return redirect(url_for('update_lib'))
 	elif request.method == 'GET':
-		form.first_name = book.first_name
-		form.surname = book.surname
-		form.title = book.title
-		form.pages = book.pages
-		form.language = book.language
+		form.first_name.data = book.first_name
+		form.surname.data = book.surname
+		form.title.data = book.title
+		form.pages.data = book.pages
+		form.language.data = book.language
 	return render_template('update_lib.html', title='Update my library', form=form)
 
 # logout route
