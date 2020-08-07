@@ -3,6 +3,7 @@ from flask_login import login_user, current_user, logout_user, login_required
 from application import app, db, bcrypt
 from application.models import book_library, main_library, Users
 from application.forms import BookForm, RatingForm, RegistrationForm, LoginForm, UpdateBookForm
+from wtforms_components import DateRange
 
 # # Route to the login page
 @app.route('/')
@@ -65,7 +66,7 @@ def rate():
 			date_read = form.date_read.data,
 			b_owner=current_user
 		)
-		db.session.add(RatingForm)
+		db.session.add(ratingData)
 		db.session.commit()
 		return redirect(url_for('main_lib'))
 	else:
