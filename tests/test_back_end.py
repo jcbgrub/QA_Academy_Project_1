@@ -70,7 +70,7 @@ class TestViews(TestBase):
 		self.assertEqual(response3.status_code, 200)
 		self.assertIn(b"login", response3.data)
 	def test_notloggedin_update_lib(self):
-		response4 = self.client.get(url_for("update_lib"), follow_redirects = True)
+		response4 = self.client.get(url_for("update_lib",id = 1)), follow_redirects = True)
 		self.assertEqual(response4.status_code, 200)
 		self.assertIn(b"login", response4.data)
 
@@ -93,7 +93,7 @@ class Testadding(TestBase):
 			)
 			self.assertIn(b'Test Title', response.data)
 
-	def test_new_entry(self):
+	def test_rate(self):
   	# Test that when I add a new book, I am redirected to the homepage with the new post visible
 		with self.client:
 			self.client.post(url_for('login'), data=dict(email='test@user.com',password='admin2016'),follow_redirects=True)
