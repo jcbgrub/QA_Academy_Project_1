@@ -79,7 +79,7 @@ class TestViews(TestBase):
 
 class Testadding(TestBase):
 	def test_new_entry(self):
-  	# Test that when I add a new book, I am redirected to the homepage with the new post visible
+	# Test that when I add a new book, I am redirected to the homepage with the new post visible
 		with self.client:
 			self.client.post(url_for('login'), data=dict(email='admin@admin.com',password='admin2016'),follow_redirects=True)
 			response = self.client.post(
@@ -97,10 +97,9 @@ class Testadding(TestBase):
 			self.assertEqual(response.status_code, 200)
 
 	def test_rate(self):
-  	# Test that when I add a new book, I am redirected to the homepage with the new post visible - ADMIN
-	  	with self.client:
+	# Test that when I add a new book, I am redirected to the homepage with the new post visible - ADMIN
+		with self.client:
 			self.client.post(url_for('login'), data=dict(email='admin@admin.com',password='admin2016'),follow_redirects=True)
-
 			response = self.client.post(
 				'/rate',
 				data=dict(
@@ -114,7 +113,7 @@ class Testadding(TestBase):
 			self.assertIn(b'Test comment', response.data)
 			self.assertEqual(response.status_code, 200)
 
-  	# Test that when I add a new book, I am redirected to the homepage with the new post visible - USER
+	# Test that when I add a new book, I am redirected to the homepage with the new post visible - USER
 		with self.client:
 			self.client.post(url_for('login'), data=dict(email='test@user.com',password='test2016'),follow_redirects=True)
 
@@ -126,13 +125,12 @@ class Testadding(TestBase):
 
 				),
 				follow_redirects=False
-				# potray all  is missing.
 			)
 			self.assertIn(b'Test comment', response.data)
 			self.assertEqual(response.status_code, 200)
 
 class Testupdating(TestBase):
-	  	# Test that when I update a new book, I am redirected to the homepage with the new post visible
+	# Test that when I update a new book, I am redirected to the homepage with the new post visible
 	def test_editproduct(self):
 		with self.client:
 			self.client.post(
