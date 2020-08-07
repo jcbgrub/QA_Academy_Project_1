@@ -19,7 +19,7 @@ test_admin_password = "admin2020"
 class TestBase(LiveServerTestCase):
 
 	def create_app(self):
-		app.config['SQLALCHEMY_DATABASE_URI'] = str(getenv('TEST_DATABASE'))
+		app.config['SQLALCHEMY_DATABASE_URI'] = str(getenv('TEST_DB_URI'))
 		app.config['SECRET_KEY'] = getenv('TEST_SECRET_KEY')
 		return app
 
@@ -72,7 +72,6 @@ class TestRegistration(TestBase):
 		# Click login menu link
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
 		time.sleep(1)
-
 		# Fill in login form
 		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_email)
 		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
