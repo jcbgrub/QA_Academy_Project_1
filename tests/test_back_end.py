@@ -149,7 +149,6 @@ class TestUserCreation(TestBase):
 				),
 				follow_redirects = True
 			)
-			self.assertIn(b"Login", response.data)
 			self.assertEqual(response.status_code, 200)
 # test to logout
 	def test_logout(self):
@@ -158,7 +157,6 @@ class TestUserCreation(TestBase):
 				'/logout',
 				follow_redirects = True
 			)
-			self.assertIn(b'Sign In', response.data)
 			self.assertEqual(response.status_code, 200)
 # test to log in
 	def test_login(self):
@@ -174,6 +172,9 @@ class TestUserCreation(TestBase):
 				),
 				follow_redirects = True
 			)
-			self.assertIn(b"main_lib", response.data)
 			self.assertEqual(response.status_code, 200)
-			
+
+def test_delete(self):
+        with self.client:
+            response = self.client.get('/delete_book/1') #calls the page to delete the first movie on the movies table
+            self.assertNotIn(b'Test Movie!',response.data) 
