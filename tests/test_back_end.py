@@ -120,7 +120,7 @@ class Testupdating(TestBase):
 			self.client.post(url_for("login"),data = dict(username = "test", password = "password"),follow_redirects = True)
 			
 			response = self.client.post(
-				url_for("main_lib", book_id = 1),
+				url_for("update_lib", book_id = 1),
 				data = dict(
 					first_name = "Test update name",
 					surname = "Test updatesuname",
