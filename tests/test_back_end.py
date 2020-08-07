@@ -134,7 +134,7 @@ class Testupdating(TestBase):
 			self.assertEqual(response.status_code, 200)
 
 # testing to delete entries.
-def test_delete(self):
+	def test_delete_book(self):
 		with self.client:
 			self.client.post(url_for("login"),data = dict(username = "test", password = "password"),follow_redirects = True)
 			response = self.client.post(
@@ -148,6 +148,7 @@ def test_delete(self):
 				),
 				follow_redirects=True
 			)
+			self.assertNotIn(b'Test updatesuname',response.data)
 			self.assertEqual(response.status_code, 200)
 
 class TestUserCreation(TestBase):
