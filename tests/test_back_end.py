@@ -81,7 +81,7 @@ class Testadding(TestBase):
 	def test_new_entry(self):
   	# Test that when I add a new book, I am redirected to the homepage with the new post visible
 		with self.client:
-			self.client.post(url_for('login'), data=dict(email='test@user.com',password='admin2016'),follow_redirects=True)
+			self.client.post(url_for('login'), data=dict(email='admin@admin.com',password='admin2016'),follow_redirects=True)
 			response = self.client.post(
 				'/new_entry',
 				data=dict(
@@ -97,19 +97,62 @@ class Testadding(TestBase):
 			self.assertEqual(response.status_code, 200)
 
 	def test_rate(self):
-  	# Test that when I add a new book, I am redirected to the homepage with the new post visible
-		with self.client:
-			self.client.post(url_for('login'), data=dict(email='test@user.com',password='admin2016'),follow_redirects=True)
+  	# Test that when I add a new book, I am redirected to the homepage with the new post visible - ADMIN
+	  		with self.client:
+			self.client.post(url_for('login'), data=dict(email='admin@admin.com',password='admin2016'),follow_redirects=True)
 
 			response = self.client.post(
 				'/rate',
 				data=dict(
 				rating = '1',
-				comment = 'random comment'
+				comment = 'Test comment'
 
 				),
 				follow_redirects=False
 				# potray all  is missing.
 			)
-			self.assertIn(b'main_lib', response.data)
+			self.assertIn(b'Test comment', response.data)
 			self.assertEqual(response.status_code, 200)
+
+  	# Test that when I add a new book, I am redirected to the homepage with the new post visible - USER
+		with self.client:
+			self.client.post(url_for('login'), data=dict(email='test@user.com',password='test2016'),follow_redirects=True)
+
+			response = self.client.post(
+				'/rate',
+				data=dict(
+				rating = '1',
+				comment = 'Test comment'
+
+				),
+				follow_redirects=False
+				# potray all  is missing.
+			)
+			self.assertIn(b'Test comment', response.data)
+			self.assertEqual(response.status_code, 200)
+
+class Testupdating(TestBase):
+	  	# Test that when I update a new book, I am redirected to the homepage with the new post visible
+	def test_editproduct(self):
+        with self.client:
+            self.client.post(
+                url_for("login"),
+                data = dict(
+                    username = "test",
+                    password = "password"
+                ),
+                follow_redirects = True
+            )
+            response = self.client.post(
+                url_for("edit_product", book_id = 1),
+                data = dict(
+					first_name = "Test update name",
+					surname = "Test updatesuname",
+					title = "Test update Title",
+					pages = "123",
+					language = "Test update language"
+				),
+				follow_redirects=True
+            )
+            self.assertIn(b"Test update Title", response.data),
+            self.assertEqual(response.status_code, 200)
