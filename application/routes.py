@@ -65,7 +65,7 @@ def rate():
 		ratingData = main_library(
 			rating = form.rating.data,
 			comment = form.comment.data,
-			b_owner = current_user,
+			m_owner = current_user,
 			bookcode = book
 		)
 		db.session.add(ratingData)
