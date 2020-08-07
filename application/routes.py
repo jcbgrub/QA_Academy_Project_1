@@ -56,13 +56,17 @@ def new_entry():
 def rate():
 	form = RatingForm()
 	choices = book_library.query.filter_by(title=book_library.title).all()
-	form.select_title.choices=choices
+	choices2 =[]
+	for book in choices:
+		choices2.append(book.title)
+	form.select_title.choices=choices2
+	book = book_library.query.filter_by(title=form.select_title.data).first()
 	if form.validate_on_submit():
 		ratingData = main_library(
-			select_title = form.select_title.data,
 			rating = form.rating.data,
 			comment = form.comment.data,
-			b_owner=current_user
+			b_owner = current_user,
+			bookcode = book
 		)
 		db.session.add(ratingData)
 		db.session.commit()
