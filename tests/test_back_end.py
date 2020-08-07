@@ -110,6 +110,7 @@ class Testadding(TestBase):
 				follow_redirects=True
 				# potray all  is missing.
 			)
+			self.assertIn(b'Test comment', response.data)
 			self.assertEqual(response.status_code, 200)
 
 class Testupdating(TestBase):
@@ -132,6 +133,22 @@ class Testupdating(TestBase):
 			self.assertIn(b'Test update Title',response.data)
 			self.assertEqual(response.status_code, 200)
 
+# testing to delete entries.
+def test_delete(self):
+		with self.client:
+			self.client.post(url_for("login"),data = dict(username = "test", password = "password"),follow_redirects = True)
+			response = self.client.post(
+				url_for("delete_book", book_id = 1),
+				data = dict(
+					first_name = "Test update name",
+					surname = "Test updatesuname",
+					title = "Test update Title",
+					pages = "123",
+					language = "Test update language"
+				),
+				follow_redirects=True
+			)
+			self.assertEqual(response.status_code, 200)
 
 class TestUserCreation(TestBase):
 	# test to register new user
@@ -170,21 +187,5 @@ class TestUserCreation(TestBase):
 					confrim_password = 'test123test',
 				),
 				follow_redirects = True
-			)
-			self.assertEqual(response.status_code, 200)
-
-def test_delete(self):
-		with self.client:
-			self.client.post(url_for("login"),data = dict(username = "test", password = "password"),follow_redirects = True)
-			response = self.client.post(
-				url_for("delete_book", book_id = 1),
-				data = dict(
-					first_name = "Test update name",
-					surname = "Test updatesuname",
-					title = "Test update Title",
-					pages = "123",
-					language = "Test update language"
-				),
-				follow_redirects=True
 			)
 			self.assertEqual(response.status_code, 200)
