@@ -141,7 +141,7 @@ class TestUserCreation(TestBase):
 			response = self.client.post(
 				url_for('register'),
 				data = dict(
-					first_name = 'john'.
+					first_name = 'john',
 					last_name = 'doe',
 					email = 'john@doe.com',
 					password = 'test123test',
