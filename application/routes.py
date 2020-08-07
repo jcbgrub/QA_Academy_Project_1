@@ -27,7 +27,8 @@ def login():
 @login_required
 def main_lib():
 	BookData=book_library.query.all()
-	return render_template('main_lib.html', title='My Library',book_library=BookData)
+	MainData=main_library.query.all()
+	return render_template('main_lib.html', title='My Library',book_library=BookData, main_library=MainData)
 
 # Route to making new book entries
 @app.route('/new_entry', methods=['GET', 'POST'])

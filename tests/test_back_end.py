@@ -56,19 +56,22 @@ class TestViews(TestBase):
 		response = self.client.get(url_for('register'))
 		self.assertEqual(response.status_code, 200)
 	
-	# That that if user not logged in is redirected to the loging page
+	# Tests that if user not logged in is redirected to the loging page
 	def test_notloggedin_main_lib(self):
 		response1 = self.client.get(url_for("main_lib"), follow_redirects = True)
 		self.assertEqual(response1.status_code, 200)
 		self.assertIn(b"login", response1.data)
+	# Tests that if user not logged in is redirected to the loging page
 	def test_notloggedin_new_entry(self):
 		response2 = self.client.get(url_for("new_entry"), follow_redirects = True)
 		self.assertEqual(response2.status_code, 200)
 		self.assertIn(b"login", response2.data)
+	# Tests that if user not logged in is redirected to the loging page
 	def test_notloggedin_rate(self):
 		response3 = self.client.get(url_for("rate"), follow_redirects = True)
 		self.assertEqual(response3.status_code, 200)
 		self.assertIn(b"login", response3.data)
+			# Tests that if user not logged in is redirected to the loging page
 	def test_notloggedin_update_lib(self):
 		response4 = self.client.get(url_for("update_lib",book_id = 1), follow_redirects = True)
 		self.assertEqual(response4.status_code, 200)
@@ -79,7 +82,6 @@ class Testadding(TestBase):
   	# Test that when I add a new book, I am redirected to the homepage with the new post visible
 		with self.client:
 			self.client.post(url_for('login'), data=dict(email='test@user.com',password='admin2016'),follow_redirects=True)
-
 			response = self.client.post(
 				'/new_entry',
 				data=dict(
@@ -91,7 +93,7 @@ class Testadding(TestBase):
 				),
 				follow_redirects=True
 			)
-			self.assertIn(b'main_lib', response.data)
+			self.assertIn(b'Test Title', response.data)
 			self.assertEqual(response.status_code, 200)
 
 	def test_rate(self):
@@ -106,7 +108,8 @@ class Testadding(TestBase):
 				comment = 'random comment'
 
 				),
-				follow_redirects=True
+				follow_redirects=False
+				# potray all  is missing.
 			)
 			self.assertIn(b'main_lib', response.data)
 			self.assertEqual(response.status_code, 200)
