@@ -117,7 +117,7 @@ class Testupdating(TestBase):
 	# Test that when I update a new book, I am redirected to the homepage with the new post visible
 	def test_update_lib(self):
 		with self.client:
-			response = self.client.post(url_for("login"),data = dict(username = "test", password = "password"),follow_redirects = True)
+			response = self.client.post(url_for("login"),data = dict(email='admin@admin.com',password='admin2016'),follow_redirects = True)
 			self.assertIn(b'My Library',response.data)
 
 			response = self.client.post(
@@ -137,7 +137,7 @@ class Testupdating(TestBase):
 # testing to delete entries.
 	def test_delete_book(self):
 		with self.client:
-			self.client.post(url_for("login"),data = dict(username = "test", password = "password"),follow_redirects = True)
+			self.client.post(url_for("login"),data = dict(email='admin@admin.com',password='admin2016'),follow_redirects = True)
 			response = self.client.post(
 				url_for("delete_book", book_id = 1),
 				data = dict(
