@@ -55,16 +55,30 @@ class TestViews(TestBase):
 	def test_register_view(self):	
 		response = self.client.get(url_for('register'))
 		self.assertEqual(response.status_code, 200)
-	def test_notloggedin_editprofile(self):
+	
+	# That that if user not logged in is redirected to the loging page
+	def test_notloggedin_main_lib(self):
 		response1 = self.client.get(url_for("main_lib"), follow_redirects = True)
 		self.assertEqual(response1.status_code, 200)
 		self.assertIn(b"login", response1.data)
+	def test_notloggedin_new_entry(self):
+		response2 = self.client.get(url_for("new_entry"), follow_redirects = True)
+		self.assertEqual(response2.status_code, 200)
+		self.assertIn(b"login", response2.data)
+	def test_notloggedin_rate(self):
+		response3 = self.client.get(url_for("rate"), follow_redirects = True)
+		self.assertEqual(response3.status_code, 200)
+		self.assertIn(b"login", response3.data)
+	def test_notloggedin_update_lib(self):
+		response4 = self.client.get(url_for("update_lib"), follow_redirects = True)
+		self.assertEqual(response4.status_code, 200)
+		self.assertIn(b"login", response4.data)
 
 class Testadding(TestBase):
 	def test_new_entry(self):
   	# Test that when I add a new book, I am redirected to the homepage with the new post visible
 		with self.client:
-			self.client.post(url_for('login'), data=dict(email='admin@admin.com',password='admin2016'),follow_redirects=True)
+			self.client.post(url_for('login'), data=dict(email='test@user.com',password='admin2016'),follow_redirects=True)
 
 			response = self.client.post(
 				'/new_entry',
@@ -74,6 +88,22 @@ class Testadding(TestBase):
 					title = "Test Title",
 					pages = "123",
 					language = "Test language"
+				),
+				follow_redirects=True
+			)
+			self.assertIn(b'Test Title', response.data)
+
+	def test_new_entry(self):
+  	# Test that when I add a new book, I am redirected to the homepage with the new post visible
+		with self.client:
+			self.client.post(url_for('login'), data=dict(email='test@user.com',password='admin2016'),follow_redirects=True)
+
+			response = self.client.post(
+				'/rate',
+				data=dict(
+				rating = '1',
+				comment = 'random comment'
+
 				),
 				follow_redirects=True
 			)
