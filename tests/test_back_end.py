@@ -66,7 +66,7 @@ class Testadding(TestBase):
 					first_name = "Test name",
 					surname = "Test suname",
 					title = "Test Title",
-					pages = "Test 123",
+					pages = "123",
 					language = "Test language"
 				),
 				follow_redirects=True
