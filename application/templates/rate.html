@@ -33,16 +33,6 @@
             </div>
             {% endif %}
             <br>
-            {{ form.date_read.label }}
-            {{ form.date_read }}
-            {% if form.date_read.errors %}
-            <div class="error">
-                {% for error in form.date_read.errors %}
-                <span>{{ error }}</span>
-                {% endfor %}
-            </div>
-            {% endif %}
-            <br>
             {{ form.submit }}
         </form>
     </div>
