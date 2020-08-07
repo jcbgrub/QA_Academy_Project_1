@@ -117,8 +117,9 @@ class Testupdating(TestBase):
 	# Test that when I update a new book, I am redirected to the homepage with the new post visible
 	def test_update_lib(self):
 		with self.client:
-			self.client.post(url_for("login"),data = dict(username = "test", password = "password"),follow_redirects = True)
-			
+			respone = self.client.post(url_for("login"),data = dict(username = "test", password = "password"),follow_redirects = True)
+			self.assertIn(b'My Library',response.data)
+
 			response = self.client.post(
 				url_for("update_lib", book_id = 1),
 				data = dict(
