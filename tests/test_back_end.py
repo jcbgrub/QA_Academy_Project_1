@@ -56,9 +56,9 @@ class TestViews(TestBase):
 		response = self.client.get(url_for('register'))
 		self.assertEqual(response.status_code, 200)
 	def test_notloggedin_editprofile(self):
-        response1 = self.client.get(url_for("main_lib"), follow_redirects = True)
-        self.assertEqual(response1.status_code, 200)
-        self.assertIn(b"login", response1.data)
+		response1 = self.client.get(url_for("main_lib"), follow_redirects = True)
+		self.assertEqual(response1.status_code, 200)
+		self.assertIn(b"login", response1.data)
 
 class Testadding(TestBase):
 	def test_new_entry(self):
