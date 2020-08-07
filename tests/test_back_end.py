@@ -113,34 +113,12 @@ class Testadding(TestBase):
 			self.assertIn(b'Test comment', response.data)
 			self.assertEqual(response.status_code, 200)
 
-	# Test that when I add a new book, I am redirected to the homepage with the new post visible - USER
-		with self.client:
-			self.client.post(url_for('login'), data=dict(email='test@user.com',password='test2016'),follow_redirects=True)
-
-			response = self.client.post(
-				'/rate',
-				data=dict(
-				rating = '1',
-				comment = 'Test comment'
-
-				),
-				follow_redirects=False
-			)
-			self.assertIn(b'Test comment', response.data)
-			self.assertEqual(response.status_code, 200)
-
 class Testupdating(TestBase):
 	# Test that when I update a new book, I am redirected to the homepage with the new post visible
-	def test_editproduct(self):
+	def test_update_lib(self):
 		with self.client:
-			self.client.post(
-				url_for("login"),
-				data = dict(
-					username = "test",
-					password = "password"
-				),
-				follow_redirects = True
-			)
+			self.client.post(url_for("login"),data = dict(username = "test", password = "password"),follow_redirects = True)
+			
 			response = self.client.post(
 				url_for("main_lib", book_id = 1),
 				data = dict(
@@ -154,3 +132,48 @@ class Testupdating(TestBase):
 			)
 			self.assertIn(b"Test update Title", response.data),
 			self.assertEqual(response.status_code, 200)
+
+
+class TestUserCreation(TestBase):
+	# test to register new user
+	def test_register(self):
+		with self.client:
+			response = self.client.post(
+				url_for('register'),
+				data = dict(
+					first_name = 'john'.
+					last_name = 'doe',
+					email = 'john@doe.com',
+					password = 'test123test',
+					confrim_password = 'test123test',
+				),
+				follow_redirects = True
+			)
+			self.assertIn(b"Login", response.data)
+			self.assertEqual(response.status_code, 200)
+# test to logout
+	def test_logout(self):
+		with self.client:
+			response = self.client.get(
+				'/logout',
+				follow_redirects = True
+			)
+			self.assertIn(b'Sign In', response.data)
+			self.assertEqual(response.status_code, 200)
+# test to log in
+	def test_login(self):
+		with self.client:
+			response = self.client.post(
+				url_for('login'),
+				data = dict(
+					first_name = 'john'.
+					last_name = 'doe',
+					email = 'john@doe.com',
+					password = 'test123test',
+					confrim_password = 'test123test',
+				),
+				follow_redirects = True
+			)
+			self.assertIn(b"main_lib", response.data)
+			self.assertEqual(response.status_code, 200)
+			
