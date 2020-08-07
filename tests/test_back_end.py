@@ -65,7 +65,7 @@ class Testadding(TestBase):
 				data=dict(
 					first_name = "Test name",
 					surname = "Test suname",
-					title = "Test Title",,
+					title = "Test Title",
 					pages = "Test 123",
 					language = "Test language"
 				),
