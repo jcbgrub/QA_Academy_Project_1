@@ -91,7 +91,8 @@ class Testadding(TestBase):
 				),
 				follow_redirects=True
 			)
-			self.assertIn(b'Test Title', response.data)
+			self.assertIn(b'main_lib', response.data)
+			self.assertEqual(response.status_code, 200)
 
 	def test_rate(self):
   	# Test that when I add a new book, I am redirected to the homepage with the new post visible
@@ -107,4 +108,5 @@ class Testadding(TestBase):
 				),
 				follow_redirects=True
 			)
-			self.assertIn(b'Test Title', response.data)
+			self.assertIn(b'rate', response.data)
+			self.assertEqual(response.status_code, 200)
