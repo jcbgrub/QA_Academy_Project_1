@@ -130,7 +130,6 @@ class Testupdating(TestBase):
 				),
 				follow_redirects=True
 			)
-			self.assertIn(b"Test update Title", response.data),
 			self.assertEqual(response.status_code, 200)
 
 
