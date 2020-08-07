@@ -15,6 +15,17 @@
 		<a href="{{ url_for('delete_book', book_id=lib.id) }}"> Delete book</a>
 		</p>
 	</div>
+{% endfor %}
+{% endif %}
+{% if main_library %}
+{% for rate in main_library %}
+	<div>
+		<h3>{{ main_library.title }}</h3>
+		<p> 
+		- rating:</b>{{ rate.rating }}
+		- Comment:</b>{{ rate.comment }}
+		</p>
+	</div>
 	
 {% endfor %}
 {% else %}
