@@ -174,7 +174,7 @@ class TestUserCreation(TestBase):
 			self.assertEqual(response.status_code, 200)
 
 def test_delete(self):
-        with self.client:
+		with self.client:
 			self.client.post(url_for("login"),data = dict(username = "test", password = "password"),follow_redirects = True)
 			response = self.client.post(
 				url_for("delete_book", book_id = 1),
