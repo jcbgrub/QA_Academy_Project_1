@@ -70,7 +70,7 @@ class TestViews(TestBase):
 		self.assertEqual(response3.status_code, 200)
 		self.assertIn(b"login", response3.data)
 	def test_notloggedin_update_lib(self):
-		response4 = self.client.get(url_for("update_lib",id = 1)), follow_redirects = True)
+		response4 = self.client.get(url_for("update_lib",id = 1), follow_redirects = True)
 		self.assertEqual(response4.status_code, 200)
 		self.assertIn(b"login", response4.data)
 
