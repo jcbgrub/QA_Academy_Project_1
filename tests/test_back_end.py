@@ -47,12 +47,18 @@ class TestBase(TestCase):
 		db.drop_all()
 
 class TestViews(TestBase):
-	def test_homepage_view(self):
-		"""
-		Test that homepage is accessible without login
-		"""
-		response = self.client.get(url_for('main_lib'))
+	# Test that login accessible without login
+	def test_login_view(self):
+		response = self.client.get(url_for('login'))
 		self.assertEqual(response.status_code, 200)
+	# Test that register is accessible without login
+	def test_register_view(self):	
+		response = self.client.get(url_for('register'))
+		self.assertEqual(response.status_code, 200)
+	def test_notloggedin_editprofile(self):
+        response1 = self.client.get(url_for("main_lib"), follow_redirects = True)
+        self.assertEqual(response1.status_code, 200)
+        self.assertIn(b"login", response1.data)
 
 class Testadding(TestBase):
 	def test_new_entry(self):
