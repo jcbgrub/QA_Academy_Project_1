@@ -57,7 +57,7 @@ class TestBase(LiveServerTestCase):
 		# creating a test product, linked to the test supplier
 		Test_rate = main_library(
 			id = 1,
-			rate =2,
+			rating =2,
 			comment = 'test'
 		)
 		# adds the test data to the database
