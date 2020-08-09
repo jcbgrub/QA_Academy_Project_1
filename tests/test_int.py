@@ -109,7 +109,6 @@ class Testlogin(TestBase):
 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 		time.sleep(1)
 		# Assert that browser redirects to main page
-		self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
 		assert url_for('main_lib') in self.driver.current_url
 
 class Test_new_entry(TestBase):
@@ -119,8 +118,8 @@ class Test_new_entry(TestBase):
 		time.sleep(1)
 		assert url_for("login") in self.driver.current_url
 		# Fill in login form
-		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_email)
-		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
+		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys('test@test.com')
+		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys('test123')
 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 		time.sleep(1)
 
@@ -145,8 +144,8 @@ class Test_rate(TestBase):
 		time.sleep(1)
 		assert url_for("login") in self.driver.current_url
 		# Fill in login form
-		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_email)
-		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
+		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys('test@test.com')
+		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys('test123')
 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 		time.sleep(1)
 		# Assert that browser redirects to main page
@@ -171,17 +170,13 @@ class Test_changing_entries(TestBase):
 		time.sleep(1)
 		assert url_for("login") in self.driver.current_url
 		# Fill in login form
-		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_email)
-		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
+		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys('test@test.com')
+		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys('test123')
 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 		time.sleep(1)
-		# Assert that browser redirects to main page
-		self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
-		assert url_for('main_lib') in self.driver.current_url
-
 		# from main lib page click the link to the update page
 		self.driver.find_element_by_xpath('/html/body/div[2]/p/a[1]').click()
-		assert url_for('update_lib') in self.driver.current_url
+		assert url_for('update_lib/',book_id =1) in self.driver.current_url
 		# fill the form
 		self.driver.find_element_by_xpath('//*[@id="first_name"]').send_keys(test_first_name)
 		self.driver.find_element_by_xpath('//*[@id="surname"]').send_keys(test_surname)
@@ -199,20 +194,12 @@ class Test_changing_entries(TestBase):
 		time.sleep(1)
 		assert url_for("login") in self.driver.current_url
 		# Fill in login form
-		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_email)
-		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
+		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys('test@test.com')
+		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys('test123')
 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 		time.sleep(1)
-
-		# Assert that browser redirects to main page
-		self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
-		assert url_for('/html/body/div[2]/p/a[2]') in self.driver.current_url
-		self.driver.find_element_by_xpath('/html/body/div[2]/p/a[2]').click()
-		time.sleep(1)
-	# from home page click the link to the update page
-		self.driver.find_element_by_xpath('/html/body/div[2]/p/a[2]').click()
 		assert url_for('main_lib') in self.driver.current_url
-
+		self.driver.find_element_by_xpath('//*[@id="submit"]').click(/html/body/div[2]/p/a[2])
 
 if __name__ == "__main__":
 	unittest.main(port=5000)
