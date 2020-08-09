@@ -64,36 +64,36 @@ class TestBase(LiveServerTestCase):
 
 		# creating a test user
 
-		testuser = Users(
-   			id = 1,
-			first_name = 'testy',
-			last_name = 'Mctestface',
-			email = 'test@test.com',
-			password = 'test123'
-		)
-		# creating a test book
-		Test_book = book_library(
-			id = 1,
-			first_name = 'test',
-			surname = 'test',
-			title ='test',
-			pages =123,
-			language = 'test',
-			user_id = 1
-		)
-		# creating a test rating
-		Test_rate = main_library(
-			id = 1,
-			rating = 2,
-			comment = 'test',
-			user_id = 1,
-			book_id = 1
-		)
-		# adds the test data to the database
-		db.session.add(testuser)
-		db.session.add(Test_book)
-		db.session.add(Test_rate)
-		db.session.commit()
+		# testuser = Users(
+   		# 	id = 1,
+		# 	first_name = 'testy',
+		# 	last_name = 'Mctestface',
+		# 	email = 'test@test.com',
+		# 	password = 'test123'
+		# )
+		# # creating a test book
+		# Test_book = book_library(
+		# 	id = 1,
+		# 	first_name = 'test',
+		# 	surname = 'test',
+		# 	title ='test',
+		# 	pages =123,
+		# 	language = 'test',
+		# 	user_id = 1
+		# )
+		# # creating a test rating
+		# Test_rate = main_library(
+		# 	id = 1,
+		# 	rating = 2,
+		# 	comment = 'test',
+		# 	user_id = 1,
+		# 	book_id = 1
+		# )
+		# # adds the test data to the database
+		# db.session.add(testuser)
+		# db.session.add(Test_book)
+		# db.session.add(Test_rate)
+		# db.session.commit()
 
 
 	def tearDown(self):
