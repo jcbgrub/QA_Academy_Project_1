@@ -75,7 +75,6 @@ class TestRegistration(TestBase):
 		# Fill in login form
 		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_email)
 		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
-		self.driver.find_element_by_xpath('//*[@id="remember"]').checked('y')
 		self.driver.find_element_by_xpath('//*[@id="submit]').click()
 		time.sleep(1)
 
@@ -85,13 +84,13 @@ class TestRegistration(TestBase):
 class Test_Adding_entries(TestBase):
 	def test_new_entry(self):
 		# login
-		self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
-		time.sleep(1)
-		assert url_for("login") in self.driver.current_url
-		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_email)
-		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
-		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
-		assert url_for("main_lib") in self.driver.current_url
+		# self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
+		# time.sleep(1)
+		# assert url_for("login") in self.driver.current_url
+		# self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_email)
+		# self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
+		# self.driver.find_element_by_xpath('//*[@id="submit"]').click()
+		# assert url_for("main_lib") in self.driver.current_url
 
 		# Click rate menu link
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[2]').click()
