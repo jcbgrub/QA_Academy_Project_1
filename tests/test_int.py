@@ -37,14 +37,14 @@ class TestBase(LiveServerTestCase):
 		db.create_all()
 
 		# creating a test user
-		# hashed_pw1 = generate_password_hash("test")
-		# admin = Users(
-		# 	id = 1,
-		# 	first_name = "test",
-		# 	last_name = 'test',
-		# 	email = "admin@admin.com",
-		# 	password_hash = hashed_pw1
-		# )
+
+		admin = Users(
+   			 id = 1,
+			first_name = 'testy',
+			last_name = 'Mctestface',
+			email = 'test@test.com',
+			password = 'test123'
+		)
 		# creating a test supplier
 		Test_book = book_library(
 			id = 1,
@@ -57,11 +57,13 @@ class TestBase(LiveServerTestCase):
 		# creating a test product, linked to the test supplier
 		Test_rate = main_library(
 			id = 1,
-			rating =2,
-			comment = 'test'
+			rating = 2,
+			comment = 'test',
+			user_id = 1,
+			book_id = 1
 		)
 		# adds the test data to the database
-		# db.session.add(admin)
+		db.session.add(admin)
 		db.session.add(Test_book)
 		db.session.add(Test_rate)
 		db.session.commit()
