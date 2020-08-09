@@ -38,14 +38,14 @@ class TestBase(LiveServerTestCase):
 
 		# creating a test user
 
-		admin = Users(
+		testuser = Users(
    			id = 1,
 			first_name = 'testy',
 			last_name = 'Mctestface',
 			email = 'test@test.com',
 			password = 'test123'
 		)
-		# creating a test supplier
+		# creating a test book
 		Test_book = book_library(
 			id = 1,
 			first_name = 'test',
@@ -55,7 +55,7 @@ class TestBase(LiveServerTestCase):
 			language = 'test',
 			user_id = 1
 		)
-		# creating a test product, linked to the test supplier
+		# creating a test rating
 		Test_rate = main_library(
 			id = 1,
 			rating = 2,
@@ -64,7 +64,7 @@ class TestBase(LiveServerTestCase):
 			book_id = 1
 		)
 		# adds the test data to the database
-		db.session.add(admin)
+		db.session.add(testuser)
 		db.session.add(Test_book)
 		db.session.add(Test_rate)
 		db.session.commit()
@@ -104,8 +104,8 @@ class Testlogin(TestBase):
 		time.sleep(1)
 		assert url_for('login') in self.driver.current_url
 		# Fill in login form
-		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_email)
-		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
+		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(email)
+		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(password)
 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 		time.sleep(1)
 		# Assert that browser redirects to main page
@@ -117,8 +117,8 @@ class Test_new_entry(TestBase):
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
 		time.sleep(1)
 		# Fill in login form
-		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_email)
-		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
+		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys('test@test.com')
+		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys('test123')
 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 		time.sleep(1)
 		# Assert that browser redirects to main page
