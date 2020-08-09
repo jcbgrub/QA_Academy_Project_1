@@ -127,8 +127,9 @@ class Test_new_entry(TestBase):
 		# Click login menu link
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
 		time.sleep(1)
+		assert url_for("login") in self.driver.current_url
 		# Fill in login form
-		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_emai)
+		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_email)
 		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 		time.sleep(1)
@@ -140,11 +141,11 @@ class Test_new_entry(TestBase):
 		assert url_for("new_entry") in self.driver.current_url
 		time.sleep(1)
 		# Fill in lorategin form
-		self.driver.find_element_by_xpath('//*[@id="first_name"]').send_keys(test_first_name)
-		self.driver.find_element_by_xpath('//*[@id="surname"]').send_keys(test_surname)
-		self.driver.find_element_by_xpath('//*[@id="title"]').send_keys(test_title)
-		self.driver.find_element_by_xpath('//*[@id="pages"]').send_keys(test_pages)
-		self.driver.find_element_by_xpath('//*[@id="language"]').send_keys(test_language)
+		self.driver.find_element_by_xpath('//*[@id="first_name"]').send_keys('test name')
+		self.driver.find_element_by_xpath('//*[@id="surname"]').send_keys('test surname')
+		self.driver.find_element_by_xpath('//*[@id="title"]').send_keys('test title')
+		self.driver.find_element_by_xpath('//*[@id="pages"]').send_keys(123)
+		self.driver.find_element_by_xpath('//*[@id="language"]').send_keys('test lang')
 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 		time.sleep(1)
 		# Assert that browser redirects to main page
