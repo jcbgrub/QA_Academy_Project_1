@@ -198,6 +198,40 @@ class Test_new_entry(TestBase):
 # 		# Assert that browser redirects to main library page
 # 		assert url_for('main_lib') in self.driver.current_url
 
+class Test_new_entry(TestBase):
+	def test_new_entry(self):
+		self.driver.find_element_by_xpath("/html/body/div[1]/a[2]").click()
+		time.sleep(1)
+
+		# Fill in registration form
+		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_email)
+		self.driver.find_element_by_xpath('//*[@id="first_name"]').send_keys(test_admin_first_name)
+		self.driver.find_element_by_xpath('//*[@id="last_name"]').send_keys(test_admin_last_name)
+		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
+		self.driver.find_element_by_xpath('//*[@id="confirm_password"]').send_keys(test_admin_password)
+		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
+		time.sleep(1)
+
+		self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
+		time.sleep(1)
+
+		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_email)
+		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
+		self.driver.find_element_by_xpath('//*[@id="submit"]').click()        
+		time.sleep(2)
+
+		# Click new entry
+		self.driver.find_element_by_xpath('/html/body/div[1]/a[3]').click()
+		assert url_for("rate") in self.driver.current_url
+		time.sleep(3)
+		# Fill in new entry form
+		self.driver.find_element_by_xpath('//*[@id="rating"]').send_keys(2)
+		self.driver.find_element_by_xpath('//*[@id="comment"]').send_keys('test')
+		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
+		time.sleep(3)
+
+
+
 # class Test_changing_entries(TestBase):
 # 	def test_update_lib(self):
 # 		self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
