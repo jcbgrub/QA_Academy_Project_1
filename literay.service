@@ -4,10 +4,10 @@ Description=Litary Service
 
 [Service]
 User=jenkins
-WorkingDirectory=/opt/increment
-EnvironmentFile=/opt/increment/flask.env
+WorkingDirectory=/opt/literay
+EnvironmentFile=/opt/literay/flask.env
 ExecStart=/bin/sh \
-    -c 'cd /opt/increment && \
+    -c 'cd /opt/literay && \
     . ./venv/bin/activate && \
     gunicorn --workers=4 --bind=0.0.0.0:5000 app:app'
 
