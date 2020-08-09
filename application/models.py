@@ -1,7 +1,6 @@
 from application import db, login_manager
 from flask_login import UserMixin
 from datetime import datetime
-from wtforms_components import DateRange
 # Name of the database: litary_db
 # Name of testing database: literay_testing_db
 
