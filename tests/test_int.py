@@ -238,7 +238,7 @@ class Test_update_entries(TestBase):
 
 		# Click update entry
 		self.driver.find_element_by_xpath('/html/body/div[5]/p/a[1]').click()
-		assert url_for("update_lib/5") in self.driver.current_url
+		assert url_for("update_lib/<book_id>") in self.driver.current_url
 		time.sleep(3)
 		# Fill in new entry form
 		self.driver.find_element_by_xpath('/html/body/div[2]/form/input[2]').send_keys(test_update_first_name)
@@ -273,7 +273,7 @@ class Test_update_entries(TestBase):
 
 		# Click update entry
 		self.driver.find_element_by_xpath('/html/body/div[5]/p/a[2]').click()
-		assert url_for("update_lib/5") in self.driver.current_url
+		assert url_for("delete_book/<book_id>") in self.driver.current_url
 		time.sleep(3)
 		# Fill in new entry form
 		self.driver.find_element_by_xpath('/html/body/div[2]/form/input[2]').send_keys(test_update_first_name)
