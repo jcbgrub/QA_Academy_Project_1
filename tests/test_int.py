@@ -95,7 +95,7 @@ class Testlogin(TestBase):
 
 # class Test_Adding_entries(TestBase):
 	def test_new_entry(self):
-				# Click login menu link
+		# Click login menu link
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
 		time.sleep(1)
 		# Fill in login form
@@ -122,7 +122,7 @@ class Testlogin(TestBase):
 		assert url_for('main_lib') in self.driver.current_url
 
 	def test_rate(self):
-				self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
+		self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
 		time.sleep(1)
 		# Fill in login form
 		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_email)
@@ -146,7 +146,7 @@ class Testlogin(TestBase):
 
 class Test_changing_entries(TestBase):
 	def test_update_lib(self):
-				self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
+		self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
 		time.sleep(1)
 		# Fill in login form
 		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_email)
@@ -171,7 +171,7 @@ class Test_changing_entries(TestBase):
 
 	# the add movie page
 	def test_delete_books(self):
-				self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
+		self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
 		time.sleep(1)
 		# Fill in login form
 		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_email)
