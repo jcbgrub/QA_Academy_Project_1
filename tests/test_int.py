@@ -199,7 +199,7 @@ class Test_changing_entries(TestBase):
 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 		time.sleep(1)
 		assert url_for('main_lib') in self.driver.current_url
-		self.driver.find_element_by_xpath('//*[@id="submit"]').click(/html/body/div[2]/p/a[2])
+		self.driver.find_element_by_xpath('/html/body/div[2]/p/a[2]').click()
 
 if __name__ == "__main__":
 	unittest.main(port=5000)
