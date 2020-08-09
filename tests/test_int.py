@@ -61,7 +61,7 @@ class TestBase(LiveServerTestCase):
 			comment = 'test'
 		)
 		# adds the test data to the database
-		db.session.add(admin)
+		# db.session.add(admin)
 		db.session.add(Test_book)
 		db.session.add(Test_rate)
 		db.session.commit()
