@@ -94,14 +94,6 @@ class TestRegistration(TestBase):
 
 class Test_Adding_entries(TestBase):
 	def test_new_entry(self):
-		# login
-		# self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
-		# time.sleep(1)
-		# assert url_for("login") in self.driver.current_url
-		# self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_email)
-		# self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
-		# self.driver.find_element_by_xpath('//*[@id="submit"]').click()
-		# assert url_for("main_lib") in self.driver.current_url
 
 		# Click rate menu link
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[2]').click()
@@ -118,13 +110,6 @@ class Test_Adding_entries(TestBase):
 		assert url_for('main_lib') in self.driver.current_url
 
 	def test_rate(self):
-		# login
-		self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
-		assert url_for("login") in self.driver.current_url
-		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_email)
-		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
-		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
-		assert url_for("main_lib") in self.driver.current_url
 
 		# Click rate menu link
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[3]').click()
@@ -139,15 +124,6 @@ class Test_Adding_entries(TestBase):
 
 class Test_changing_entries(TestBase):
 	def test_update_lib(self):
-		# login
-		self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
-		assert url_for("login") in self.driver.current_url
-		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_email)
-		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
-		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
-		time.sleep(1)
-		assert url_for("main_lib") in self.driver.current_url
-
 		# from main lib page click the link to the update page
 		self.driver.find_element_by_xpath('/html/body/div[2]/p/a[1]').click()
 		# fill the form
@@ -163,16 +139,6 @@ class Test_changing_entries(TestBase):
 
 	# the add movie page
 	def test_delete_books(self):
-		# login
-		self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
-		time.sleep(1)
-		assert url_for("login") in self.driver.current_url
-		
-		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_email)
-		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
-		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
-		time.sleep(1)
-		assert url_for("main_lib") in self.driver.current_url
 		# Click rate menu link
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[2]').click()
 		time.sleep(1)
