@@ -132,25 +132,6 @@ class Testupdating(TestBase):
 			self.assertIn(b'Test update Title',response.data)
 			self.assertEqual(response.status_code, 200)
 
-	def test_uuuupdating_book(self):
-		with self.client:
-			self.client.post(url_for("login"),data = dict(email='admin@admin.com',password='admin2016'),follow_redirects = True)
-			response = self.client.post(
-				url_for("update_lib", book_id = 1),
-				data = dict(
-					first_name = "Test update name",
-					surname = "Test updatesuname",
-					title = "Test update Title",
-					pages = "123",
-					language = "Test update language"
-				),
-				follow_redirects=True
-			)
-			self.assertNotIn(b'Test updatesuname',response.data)
-			self.assertEqual(response.status_code, 200)
-
-	
-
 
 # testing to delete entries.
 	def test_delete_book(self):
