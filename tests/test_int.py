@@ -39,7 +39,7 @@ class TestBase(LiveServerTestCase):
 		# creating a test user
 
 		admin = Users(
-   			 id = 1,
+   			id = 1,
 			first_name = 'testy',
 			last_name = 'Mctestface',
 			email = 'test@test.com',
@@ -52,7 +52,8 @@ class TestBase(LiveServerTestCase):
 			surname = 'test',
 			title ='test',
 			pages =123,
-			language = 'test'
+			language = 'test',
+			user_id = 1
 		)
 		# creating a test product, linked to the test supplier
 		Test_rate = main_library(
