@@ -16,6 +16,17 @@ test_admin_last_name = "admin"
 test_admin_email = "admin@email.com"
 test_admin_password = "admin2020"
 
+# set variables for book entry
+test_first_name = 'test'
+test_surname = 'test'
+test_title ='test'
+test_pages ='123'
+test_language = 'test'
+
+# variables rate form
+test_admin_rate ='2'
+test_admin_comment = 'test'
+
 class TestBase(LiveServerTestCase):
 
 	def create_app(self):
