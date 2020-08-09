@@ -9,6 +9,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from application import app, db, bcrypt
 from application.models import Users, book_library, main_library
+from werkzeug.security import generate_password_hash, check_password_hash
 
 # Set test variables for test admin user
 test_admin_first_name = "admin"
@@ -36,27 +37,28 @@ class TestBase(LiveServerTestCase):
 		db.create_all()
 
 		# creating a test user
-		# hashed_pw1 = generate_password_hash("admin")
-		# admin = User(
-		# 	first_name = "test",
-		# 	last_name = 'test',
-		# 	email = "admin@admin.com",
-		# 	password_hash = hashed_pw1
-		# )
+		hashed_pw1 = generate_password_hash("test")
+		admin = User(
+			id = 1,
+			first_name = "test",
+			last_name = 'test',
+			email = "admin@admin.com",
+			password_hash = hashed_pw1
+		)
 		# creating a test supplier
 		Test_book = book_library(
-			test_id = 1,
-			test_first_name = 'test',
-			test_surname = 'test',
-			test_title ='test',
-			test_pages =123,
-			test_language = 'test'
+			id = 1,
+			first_name = 'test',
+			surname = 'test',
+			title ='test',
+			pages =123,
+			language = 'test'
 		)
 		# creating a test product, linked to the test supplier
 		Test_rate = main_library(
-			test_id = 1,
-			test_rate =2,
-			test_comment = 'test'
+			id = 1,
+			rate =2,
+			comment = 'test'
 		)
 		# adds the test data to the database
 		db.session.add(admin)
