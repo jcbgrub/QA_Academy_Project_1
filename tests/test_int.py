@@ -213,7 +213,6 @@ class Test_new_entry(TestBase):
 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 		time.sleep(3)
 
-
 # class Test_update_entries(TestBase):
 # 	def test_update_lib(self):
 # 		self.driver.find_element_by_xpath("/html/body/div[1]/a[2]").click()
