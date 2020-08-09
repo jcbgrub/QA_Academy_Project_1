@@ -6,7 +6,7 @@ from datetime import datetime
 
 # Class for the user table
 class Users(db.Model, UserMixin):
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrem ent=True)
     first_name = db.Column(db.String(30), nullable=False)
     last_name = db.Column(db.String(30), nullable=False)
     email = db.Column(db.String(150), nullable=False, unique=True)

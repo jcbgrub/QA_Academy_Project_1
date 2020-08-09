@@ -35,8 +35,7 @@ test_update_pages =123456
 test_update_language = 'U test'
 test_update_user_id = 1
 
-
-		# creating a test rating
+# creating a test rating
 test_id = 1,
 test_rating = 2
 test_comment = 'test'
@@ -64,36 +63,36 @@ class TestBase(LiveServerTestCase):
 
 		# creating a test user
 
-		testuser = Users(
-   			id = 1,
-			first_name = 'testy',
-			last_name = 'Mctestface',
-			email = 'test@test.com',
-			password = 'test123'
-		)
-		# creating a test book
-		Test_book = book_library(
-			id = 1,
-			first_name = 'test',
-			surname = 'test',
-			title ='test',
-			pages =123,
-			language = 'test',
-			user_id = 1
-		)
-		# creating a test rating
-		Test_rate = main_library(
-			id = 1,
-			rating = 2,
-			comment = 'test',
-			user_id = 1,
-			book_id = 1
-		)
-		# adds the test data to the database
-		db.session.add(testuser)
-		db.session.add(Test_book)
-		db.session.add(Test_rate)
-		db.session.commit()
+		# testuser = Users(
+   		# 	id = 1,
+		# 	first_name = 'testy',
+		# 	last_name = 'Mctestface',
+		# 	email = 'test@test.com',
+		# 	password = 'test123'
+		# )
+		# # creating a test book
+		# Test_book = book_library(
+		# 	id = 1,
+		# 	first_name = 'test',
+		# 	surname = 'test',
+		# 	title ='test',
+		# 	pages =123,
+		# 	language = 'test',
+		# 	user_id = 1
+		# )
+		# # creating a test rating
+		# Test_rate = main_library(
+		# 	id = 1,
+		# 	rating = 2,
+		# 	comment = 'test',
+		# 	user_id = 1,
+		# 	book_id = 1
+		# )
+		# # adds the test data to the database
+		# db.session.add(testuser)
+		# db.session.add(Test_book)
+		# db.session.add(Test_rate)
+		# db.session.commit()
 
 
 	def tearDown(self):
@@ -135,8 +134,9 @@ class TestLogin(TestBase):
 		self.driver.find_element_by_xpath('//*[@id="confirm_password"]').send_keys(test_admin_password)
 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 		time.sleep(1)
-
+		
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
+		assert url_for('login') in self.driver.current_url
 		time.sleep(1)
 
 		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_email)
@@ -182,6 +182,7 @@ class Test_new_entry(TestBase):
 		# Assert that browser redirects to main page
 		# assert url_for('main_lib') in self.driver.current_url
 
+class Test_new_rate(TestBase):
 	def test_rate(self):
 		self.driver.find_element_by_xpath("/html/body/div[1]/a[2]").click()
 		time.sleep(1)
