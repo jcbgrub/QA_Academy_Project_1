@@ -37,14 +37,14 @@ class TestBase(LiveServerTestCase):
 		db.create_all()
 
 		# creating a test user
-		hashed_pw1 = generate_password_hash("test")
-		admin = Users(
-			id = 1,
-			first_name = "test",
-			last_name = 'test',
-			email = "admin@admin.com",
-			password_hash = hashed_pw1
-		)
+		# hashed_pw1 = generate_password_hash("test")
+		# admin = Users(
+		# 	id = 1,
+		# 	first_name = "test",
+		# 	last_name = 'test',
+		# 	email = "admin@admin.com",
+		# 	password_hash = hashed_pw1
+		# )
 		# creating a test supplier
 		Test_book = book_library(
 			id = 1,
