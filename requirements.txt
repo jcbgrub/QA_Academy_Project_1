@@ -46,7 +46,4 @@ wrapt==1.12.1
 WTForms==2.3.3
 WTForms-Components==0.10.4
 pytest-cov
-flask-testingselenium==3.141.0
-Flask-Testing==0.8.0
-pytest==6.0.1
-Werkzeug==0.16.1
+pytest
