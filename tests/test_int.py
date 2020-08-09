@@ -79,6 +79,7 @@ class TestRegistration(TestBase):
 		# Assert that browser redirects to login page
 		assert url_for('login') in self.driver.current_url
 
+class Testlogin(TestBase):
 	def test_login(self):
 		# Click login menu link
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
@@ -86,7 +87,7 @@ class TestRegistration(TestBase):
 		# Fill in login form
 		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_email)
 		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
-		self.driver.find_element_by_xpath('/html/body/div[2]/form/div[4]/input').click()
+		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 		time.sleep(1)
 
 		# Assert that browser redirects to main page
