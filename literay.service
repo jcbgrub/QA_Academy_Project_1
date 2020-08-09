@@ -1,0 +1,12 @@
+  
+[Unit]
+Description=Litary Service
+
+[Service]
+User=jenkins
+WorkingDirectory=/opt/increment
+EnvironmentFile=/opt/increment/flask.env
+ExecStart=/opt/movie-collection-app/venv/bin/gunicorn --workers=4 --bind=0.0.0.0:5000 application:app
+
+[Install]
+WantedBy=multi-user.target
