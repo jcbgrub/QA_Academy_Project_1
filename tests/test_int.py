@@ -214,75 +214,75 @@ class Test_new_entry(TestBase):
 		time.sleep(3)
 
 
-class Test_update_entries(TestBase):
-	def test_update_lib(self):
-		self.driver.find_element_by_xpath("/html/body/div[1]/a[2]").click()
-		time.sleep(1)
+# class Test_update_entries(TestBase):
+# 	def test_update_lib(self):
+# 		self.driver.find_element_by_xpath("/html/body/div[1]/a[2]").click()
+# 		time.sleep(1)
 
-		# Fill in registration form
-		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_email)
-		self.driver.find_element_by_xpath('//*[@id="first_name"]').send_keys(test_admin_first_name)
-		self.driver.find_element_by_xpath('//*[@id="last_name"]').send_keys(test_admin_last_name)
-		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
-		self.driver.find_element_by_xpath('//*[@id="confirm_password"]').send_keys(test_admin_password)
-		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
-		time.sleep(1)
+# 		# Fill in registration form
+# 		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_email)
+# 		self.driver.find_element_by_xpath('//*[@id="first_name"]').send_keys(test_admin_first_name)
+# 		self.driver.find_element_by_xpath('//*[@id="last_name"]').send_keys(test_admin_last_name)
+# 		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
+# 		self.driver.find_element_by_xpath('//*[@id="confirm_password"]').send_keys(test_admin_password)
+# 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
+# 		time.sleep(1)
 
-		self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
-		time.sleep(1)
+# 		self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
+# 		time.sleep(1)
 
-		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_email)
-		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
-		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
-		time.sleep(2)
+# 		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_email)
+# 		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
+# 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
+# 		time.sleep(2)
 
-		# Click update entry
-		self.driver.find_element_by_xpath('/html/body/div[5]/p/a[1]').click()
-		assert url_for("update_lib/<book_id>") in self.driver.current_url
-		time.sleep(3)
-		# Fill in new entry form
-		self.driver.find_element_by_xpath('/html/body/div[2]/form/input[2]').send_keys(test_update_first_name)
-		self.driver.find_element_by_xpath('//*[@id="surname"]').send_keys(test_update_surname)
-		self.driver.find_element_by_xpath('//*[@id="title"]').send_keys(test_update_title)
-		self.driver.find_element_by_xpath('/html/body/div[2]/form/input[5]').send_keys(test_update_pages)
-		self.driver.find_element_by_xpath('/html/body/div[2]/form/input[6]').send_keys(test_language )
-		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
-		time.sleep(3)
+# 		# Click update entry
+# 		self.driver.find_element_by_xpath('/html/body/div[5]/p/a[1]').click()
+# 		assert url_for("update_lib/<book_id>") in self.driver.current_url
+# 		time.sleep(3)
+# 		# Fill in new entry form
+# 		self.driver.find_element_by_xpath('/html/body/div[2]/form/input[2]').send_keys(test_update_first_name)
+# 		self.driver.find_element_by_xpath('//*[@id="surname"]').send_keys(test_update_surname)
+# 		self.driver.find_element_by_xpath('//*[@id="title"]').send_keys(test_update_title)
+# 		self.driver.find_element_by_xpath('/html/body/div[2]/form/input[5]').send_keys(test_update_pages)
+# 		self.driver.find_element_by_xpath('/html/body/div[2]/form/input[6]').send_keys(test_language )
+# 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
+# 		time.sleep(3)
 
-# 	# the deleting a book
-	def test_delete_books(self):
-		self.driver.find_element_by_xpath('/html/body/div[5]/p/a[1]').click()
-		time.sleep(1)
+# # 	# the deleting a book
+# 	def test_delete_books(self):
+# 		self.driver.find_element_by_xpath('/html/body/div[5]/p/a[1]').click()
+# 		time.sleep(1)
 
-		# Fill in registration form
-		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_email)
-		self.driver.find_element_by_xpath('//*[@id="first_name"]').send_keys(test_admin_first_name)
-		self.driver.find_element_by_xpath('//*[@id="last_name"]').send_keys(test_admin_last_name)
-		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
-		self.driver.find_element_by_xpath('//*[@id="confirm_password"]').send_keys(test_admin_password)
-		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
-		time.sleep(1)
+# 		# Fill in registration form
+# 		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_email)
+# 		self.driver.find_element_by_xpath('//*[@id="first_name"]').send_keys(test_admin_first_name)
+# 		self.driver.find_element_by_xpath('//*[@id="last_name"]').send_keys(test_admin_last_name)
+# 		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
+# 		self.driver.find_element_by_xpath('//*[@id="confirm_password"]').send_keys(test_admin_password)
+# 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
+# 		time.sleep(1)
 
-		self.driver.find_element_by_xpath('/html/body/div[5]/p/a[1]').click()
-		time.sleep(1)
+# 		self.driver.find_element_by_xpath('/html/body/div[5]/p/a[1]').click()
+# 		time.sleep(1)
 
-		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_email)
-		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
-		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
-		time.sleep(2)
+# 		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_email)
+# 		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
+# 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
+# 		time.sleep(2)
 
-		# Click update entry
-		self.driver.find_element_by_xpath('/html/body/div[5]/p/a[2]').click()
-		assert url_for("delete_book/<book_id>") in self.driver.current_url
-		time.sleep(3)
-		# Fill in new entry form
-		self.driver.find_element_by_xpath('/html/body/div[2]/form/input[2]').send_keys(test_update_first_name)
-		self.driver.find_element_by_xpath('//*[@id="surname"]').send_keys(test_update_surname)
-		self.driver.find_element_by_xpath('//*[@id="title"]').send_keys(test_update_title)
-		self.driver.find_element_by_xpath('/html/body/div[2]/form/input[5]').send_keys(test_update_pages)
-		self.driver.find_element_by_xpath('/html/body/div[2]/form/input[6]').send_keys(test_language )
-		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
-		time.sleep(3)
+# 		# Click update entry
+# 		self.driver.find_element_by_xpath('/html/body/div[5]/p/a[2]').click()
+# 		assert url_for("delete_book/<book_id>") in self.driver.current_url
+# 		time.sleep(3)
+# 		# Fill in new entry form
+# 		self.driver.find_element_by_xpath('/html/body/div[2]/form/input[2]').send_keys(test_update_first_name)
+# 		self.driver.find_element_by_xpath('//*[@id="surname"]').send_keys(test_update_surname)
+# 		self.driver.find_element_by_xpath('//*[@id="title"]').send_keys(test_update_title)
+# 		self.driver.find_element_by_xpath('/html/body/div[2]/form/input[5]').send_keys(test_update_pages)
+# 		self.driver.find_element_by_xpath('/html/body/div[2]/form/input[6]').send_keys(test_language )
+# 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
+# 		time.sleep(3)
 
 if __name__ == "__main__":
 	unittest.main(port=5000)
