@@ -98,7 +98,7 @@ class TestRegistration(TestBase):
 		assert url_for('login') in self.driver.current_url
 
 class Testlogin(TestBase):
-	def test_login(self):
+	def test_logi1n(self):
 		# Click login menu link
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
 		time.sleep(1)
@@ -111,14 +111,25 @@ class Testlogin(TestBase):
 		# Assert that browser redirects to main page
 		assert url_for('main_lib') in self.driver.current_url
 
+    def test_login2(self):
+        self.driver.find_element_by_xpath("/html/body/div[1]/a[2]").click()
+        time.sleep(1)
+        assert url_for("login") in self.driver.current_url
+		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_email)
+        self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
+        self.driver.find_element_by_xpath('//*[@id="submit"]').click()
+        assert url_for("main_lib") in self.driver.current_url
+
+
+
 class Test_new_entry(TestBase):
 	def test_new_entry(self):
 		# Click login menu link
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
 		time.sleep(1)
 		# Fill in login form
-		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys('test@test.com')
-		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys('test123')
+		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_emai)
+		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 		time.sleep(1)
 		# Assert that browser redirects to main page
