@@ -10,6 +10,12 @@ from selenium.webdriver.chrome.options import Options
 from application import app, db, bcrypt
 from application.models import Users, book_library, main_library
 
+# Set test variables for test admin user
+test_admin_first_name = "admin"
+test_admin_last_name = "admin"
+test_admin_email = "admin@email.com"
+test_admin_password = "admin2020"
+
 class TestBase(LiveServerTestCase):
 
 	def create_app(self):
@@ -25,27 +31,39 @@ class TestBase(LiveServerTestCase):
 		chrome_options.add_argument("--headless")
 		self.driver = webdriver.Chrome(executable_path="/home/jacob_hp_grub/increment/chromedriver", chrome_options=chrome_options)
 		self.driver.get("http://localhost:5000")
-
-		# Set test variables for test admin user
-		test_admin_first_name = "admin"
-		test_admin_last_name = "admin"
-		test_admin_email = "admin@email.com"
-		test_admin_password = "admin2020"
-
-		# set variables for book entry
-		test_first_name = 'test'
-		test_surname = 'test'
-		test_title ='test'
-		test_pages ='123'
-		test_language = 'test'
-
-		# variables rate form
-		test_admin_rate ='2'
-		test_admin_comment = 'test'
-
 		db.session.commit()
 		db.drop_all()
 		db.create_all()
+
+		# creating a test user
+		hashed_pw1 = generate_password_hash("admin")
+		admin = User(
+			first_name = "test",
+			last_name = 'test',
+			email = "admin@admin.com",
+			password_hash = hashed_pw1
+		)
+		# creating a test supplier
+		Test_book = book_library(
+			test_id = 1,
+			test_first_name = 'test',
+			test_surname = 'test',
+			test_title ='test',
+			test_pages =123,
+			test_language = 'test'
+		)
+		# creating a test product, linked to the test supplier
+		Test_rate = Main_library(
+			test_id = 1,
+			test_rate =2,
+			test_comment = 'test'
+		)
+		# adds the test data to the database
+		db.session.add(admin)
+		db.session.add(Test_book)
+		db.session.add(Test_rate)
+		db.session.commit()
+
 
 	def tearDown(self):
 		self.driver.quit()
@@ -134,8 +152,8 @@ class Test_rate(TestBase):
 		assert url_for('rate') in self.driver.current_url
 		time.sleep(1)
 		# Fill in rate form
-		self.driver.find_element_by_xpath('//*[@id="rating"]').send_keys(test_admin_rate)
-		self.driver.find_element_by_xpath('//*[@id="comment"]').send_keys(test_admin_comment)
+		self.driver.find_element_by_xpath('//*[@id="rating"]').send_keys(test_rate)
+		self.driver.find_element_by_xpath('//*[@id="comment"]').send_keys(test_comment)
 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 		time.sleep(1)
 		# Assert that browser redirects to main library page
