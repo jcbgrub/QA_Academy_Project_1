@@ -104,8 +104,8 @@ class Testlogin(TestBase):
 		time.sleep(1)
 		assert url_for('login') in self.driver.current_url
 		# Fill in login form
-		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(email)
-		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(password)
+		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys('test@test.com')
+		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys('test123')
 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 		time.sleep(1)
 		# Assert that browser redirects to main page
