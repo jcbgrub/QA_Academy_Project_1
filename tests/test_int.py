@@ -169,8 +169,7 @@ class Test_new_entry(TestBase):
 		self.driver.find_element_by_xpath('/html/body/div[2]/form/input[6]').send_keys(test_language )
 		self.driver.find_element_by_xpath('/html/body/div[2]/form/input[7]').click()
 		time.sleep(3)
-		# Assert that browser redirects to main page
-		assert url_for('main_lib') in self.driver.current_url
+
 
 # class Test_rate(TestBase):
 # 	def test_rate(self):
