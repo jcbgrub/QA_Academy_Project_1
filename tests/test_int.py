@@ -156,13 +156,12 @@ class Test_new_entry(TestBase):
 		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()        
 		time.sleep(2)
-		assert url_for('main_lib') in self.driver.current_url
 
-		# Click rate menu link
+		# Click new entry
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[2]').click()
 		assert url_for("new_entry") in self.driver.current_url
-		time.sleep(1)
-		# Fill in lorategin form
+		time.sleep(3)
+		# Fill in new entry form
 		self.driver.find_element_by_xpath('//*[@id="first_name"]').send_keys(test_first_name)
 		self.driver.find_element_by_xpath('//*[@id="surname"]').send_keys(test_surname)
 		self.driver.find_element_by_xpath('//*[@id="title"]').send_keys(test_title)
