@@ -10,23 +10,6 @@ from selenium.webdriver.chrome.options import Options
 from application import app, db, bcrypt
 from application.models import Users, book_library, main_library
 
-# Set test variables for test admin user
-test_admin_first_name = "admin"
-test_admin_last_name = "admin"
-test_admin_email = "admin@email.com"
-test_admin_password = "admin2020"
-
-# set variables for book entry
-test_first_name = 'test'
-test_surname = 'test'
-test_title ='test'
-test_pages ='123'
-test_language = 'test'
-
-# variables rate form
-test_admin_rate ='2'
-test_admin_comment = 'test'
-
 class TestBase(LiveServerTestCase):
 
 	def create_app(self):
@@ -42,6 +25,24 @@ class TestBase(LiveServerTestCase):
 		chrome_options.add_argument("--headless")
 		self.driver = webdriver.Chrome(executable_path="/home/jacob_hp_grub/increment/chromedriver", chrome_options=chrome_options)
 		self.driver.get("http://localhost:5000")
+
+		# Set test variables for test admin user
+		test_admin_first_name = "admin"
+		test_admin_last_name = "admin"
+		test_admin_email = "admin@email.com"
+		test_admin_password = "admin2020"
+
+		# set variables for book entry
+		test_first_name = 'test'
+		test_surname = 'test'
+		test_title ='test'
+		test_pages ='123'
+		test_language = 'test'
+
+		# variables rate form
+		test_admin_rate ='2'
+		test_admin_comment = 'test'
+
 		db.session.commit()
 		db.drop_all()
 		db.create_all()
@@ -57,12 +58,6 @@ class TestBase(LiveServerTestCase):
 class TestRegistration(TestBase):
 
 	def test_registration(self):
-		"""
-		Test that a user can create an account using the registration form
-		if all fields are filled out correctly, and that they will be 
-		redirected to the login page
-		"""
-
 		# Click register menu link
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[2]').click()
 		time.sleep(1)
@@ -84,13 +79,14 @@ class Testlogin(TestBase):
 		# Click login menu link
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
 		time.sleep(1)
+		assert url_for('login') in self.driver.current_url
 		# Fill in login form
 		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_email)
 		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 		time.sleep(1)
 		# Assert that browser redirects to main page
-		assert url_for('login') in self.driver.current_url
+		assert url_for('main_lib') in self.driver.current_url
 
 class Test_new_entry(TestBase):
 	def test_new_entry(self):
@@ -103,7 +99,7 @@ class Test_new_entry(TestBase):
 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 		time.sleep(1)
 		# Assert that browser redirects to main page
-		assert url_for('login') in self.driver.current_url
+		assert url_for('main_lib') in self.driver.current_url
 
 		# Click rate menu link
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[2]').click()
@@ -119,11 +115,11 @@ class Test_new_entry(TestBase):
 		time.sleep(1)
 		# Assert that browser redirects to main page
 		assert url_for('main_lib') in self.driver.current_url
-		
+
 class Test_rate(TestBase):
 	def test_rate(self):
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
-		assert url_for("rate") in self.driver.current_url
+		assert url_for("login") in self.driver.current_url
 		time.sleep(1)
 		# Fill in login form
 		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_email)
@@ -131,7 +127,7 @@ class Test_rate(TestBase):
 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 		time.sleep(1)
 		# Assert that browser redirects to main page
-		assert url_for('login') in self.driver.current_url
+		assert url_for('main_lib') in self.driver.current_url
 
 		# Click rate menu link
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[3]').click()
@@ -148,7 +144,7 @@ class Test_rate(TestBase):
 class Test_changing_entries(TestBase):
 	def test_update_lib(self):
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
-		assert url_for("new_entry") in self.driver.current_url
+		assert url_for("login") in self.driver.current_url
 		time.sleep(1)
 		# Fill in login form
 		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_email)
@@ -157,7 +153,7 @@ class Test_changing_entries(TestBase):
 		time.sleep(1)
 
 		# Assert that browser redirects to main page
-		assert url_for('login') in self.driver.current_url
+		assert url_for('main_lib') in self.driver.current_url
 		# from main lib page click the link to the update page
 		self.driver.find_element_by_xpath('/html/body/div[2]/p/a[1]').click()
 		assert url_for('update_lib') in self.driver.current_url
@@ -176,6 +172,8 @@ class Test_changing_entries(TestBase):
 	def test_delete_books(self):
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
 		time.sleep(1)
+		assert url_for("login") in self.driver.current_url
+
 		# Fill in login form
 		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_email)
 		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
