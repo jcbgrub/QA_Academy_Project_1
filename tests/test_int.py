@@ -53,7 +53,7 @@ class TestBase(LiveServerTestCase):
 			test_language = 'test'
 		)
 		# creating a test product, linked to the test supplier
-		Test_rate = Main_library(
+		Test_rate = main_library(
 			test_id = 1,
 			test_rate =2,
 			test_comment = 'test'
