@@ -123,10 +123,6 @@ class Test_new_entry(TestBase):
 		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 		time.sleep(1)
-		# Assert that browser redirects to main page
-		self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
-		assert url_for('main_lib') in self.driver.current_url
-
 		# Click rate menu link
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[2]').click()
 		assert url_for("new_entry") in self.driver.current_url
@@ -152,17 +148,13 @@ class Test_rate(TestBase):
 		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 		time.sleep(1)
-		# Assert that browser redirects to main page
-		self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
-		assert url_for('main_lib') in self.driver.current_url
-
 		# Click rate menu link
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[3]').click()
 		assert url_for('rate') in self.driver.current_url
 		time.sleep(1)
 		# Fill in rate form
-		self.driver.find_element_by_xpath('//*[@id="rating"]').send_keys(test_rate)
-		self.driver.find_element_by_xpath('//*[@id="comment"]').send_keys(test_comment)
+		self.driver.find_element_by_xpath('//*[@id="rating"]').send_keys(2)
+		self.driver.find_element_by_xpath('//*[@id="comment"]').send_keys('test')
 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 		time.sleep(1)
 		# Assert that browser redirects to main library page
@@ -196,7 +188,7 @@ class Test_changing_entries(TestBase):
 		# Assert that browser redirects to main library page
 		assert url_for('main_lib') in self.driver.current_url
 
-	# the add movie page
+	# the deleting a book
 	def test_delete_books(self):
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
 		time.sleep(1)
@@ -208,15 +200,8 @@ class Test_changing_entries(TestBase):
 		time.sleep(1)
 		# Assert that browser redirects to main page
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
-		assert url_for('main_lib') in self.driver.current_url
-		time.sleep(1)
-		# Fill in lorategin form
-		self.driver.find_element_by_xpath('//*[@id="first_name"]').send_keys(test_first_name)
-		self.driver.find_element_by_xpath('//*[@id="surname"]').send_keys(test_surname)
-		self.driver.find_element_by_xpath('//*[@id="title"]').send_keys(test_title)
-		self.driver.find_element_by_xpath('//*[@id="pages"]').send_keys(test_pages)
-		self.driver.find_element_by_xpath('//*[@id="language"]').send_keys(test_language)
-		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
+		assert url_for('/html/body/div[2]/p/a[2]') in self.driver.current_url
+		self.driver.find_element_by_xpath('/html/body/div[2]/p/a[2]').click()
 		time.sleep(1)
 	# from home page click the link to the update page
 		self.driver.find_element_by_xpath('/html/body/div[2]/p/a[2]').click()
