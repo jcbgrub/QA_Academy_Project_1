@@ -89,7 +89,6 @@ class Testlogin(TestBase):
 		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 		time.sleep(1)
-
 		# Assert that browser redirects to main page
 		assert url_for('login') in self.driver.current_url
 
@@ -103,12 +102,12 @@ class Testlogin(TestBase):
 		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 		time.sleep(1)
-
 		# Assert that browser redirects to main page
 		assert url_for('login') in self.driver.current_url
 
 		# Click rate menu link
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[2]').click()
+		assert url_for("new_entry") in self.driver.current_url
 		time.sleep(1)
 		# Fill in lorategin form
 		self.driver.find_element_by_xpath('//*[@id="first_name"]').send_keys(test_first_name)
@@ -123,18 +122,19 @@ class Testlogin(TestBase):
 
 	def test_rate(self):
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
+		assert url_for("rate") in self.driver.current_url
 		time.sleep(1)
 		# Fill in login form
 		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_email)
 		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 		time.sleep(1)
-
 		# Assert that browser redirects to main page
 		assert url_for('login') in self.driver.current_url
 
 		# Click rate menu link
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[3]').click()
+		assert url_for('rate') in self.driver.current_url
 		time.sleep(1)
 		# Fill in rate form
 		self.driver.find_element_by_xpath('//*[@id="rating"]').send_keys(test_admin_rate)
@@ -147,6 +147,7 @@ class Testlogin(TestBase):
 class Test_changing_entries(TestBase):
 	def test_update_lib(self):
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
+		assert url_for("new_entry") in self.driver.current_url
 		time.sleep(1)
 		# Fill in login form
 		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_email)
@@ -158,6 +159,7 @@ class Test_changing_entries(TestBase):
 		assert url_for('login') in self.driver.current_url
 		# from main lib page click the link to the update page
 		self.driver.find_element_by_xpath('/html/body/div[2]/p/a[1]').click()
+		assert url_for('update_lib') in self.driver.current_url
 		# fill the form
 		self.driver.find_element_by_xpath('//*[@id="first_name"]').send_keys(test_first_name)
 		self.driver.find_element_by_xpath('//*[@id="surname"]').send_keys(test_surname)
@@ -183,6 +185,7 @@ class Test_changing_entries(TestBase):
 		assert url_for('login') in self.driver.current_url
 		# Click rate menu link
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[2]').click()
+		assert url_for("main_lib") in self.driver.current_url
 		time.sleep(1)
 		# Fill in lorategin form
 		self.driver.find_element_by_xpath('//*[@id="first_name"]').send_keys(test_first_name)
