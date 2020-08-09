@@ -38,7 +38,7 @@ class TestBase(LiveServerTestCase):
 
 		# creating a test user
 		hashed_pw1 = generate_password_hash("test")
-		admin = User(
+		admin = Users(
 			id = 1,
 			first_name = "test",
 			last_name = 'test',
