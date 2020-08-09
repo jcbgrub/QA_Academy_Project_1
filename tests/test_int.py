@@ -92,7 +92,7 @@ class Testlogin(TestBase):
 		# Assert that browser redirects to main page
 		assert url_for('login') in self.driver.current_url
 
-# class Test_Adding_entries(TestBase):
+class Test_new_entry(TestBase):
 	def test_new_entry(self):
 		# Click login menu link
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
@@ -119,7 +119,8 @@ class Testlogin(TestBase):
 		time.sleep(1)
 		# Assert that browser redirects to main page
 		assert url_for('main_lib') in self.driver.current_url
-
+		
+class Test_rate(TestBase):
 	def test_rate(self):
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
 		assert url_for("rate") in self.driver.current_url
