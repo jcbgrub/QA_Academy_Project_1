@@ -123,6 +123,7 @@ class Test_new_entry(TestBase):
 		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 		time.sleep(1)
+
 		# Click rate menu link
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[2]').click()
 		assert url_for("new_entry") in self.driver.current_url
@@ -148,6 +149,10 @@ class Test_rate(TestBase):
 		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 		time.sleep(1)
+		# Assert that browser redirects to main page
+		self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
+		assert url_for('main_lib') in self.driver.current_url
+
 		# Click rate menu link
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[3]').click()
 		assert url_for('rate') in self.driver.current_url
@@ -198,6 +203,7 @@ class Test_changing_entries(TestBase):
 		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 		time.sleep(1)
+
 		# Assert that browser redirects to main page
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
 		assert url_for('/html/body/div[2]/p/a[2]') in self.driver.current_url
