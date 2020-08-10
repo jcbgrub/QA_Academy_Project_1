@@ -18,7 +18,7 @@ test_admin_email = "admin@email.com"
 test_admin_password = "admin2020"
 
 # creating test book entry
-test_id = 1,
+test_id = 1
 test_first_name = 'test'
 test_surname = 'test'
 test_title ='test'
@@ -27,7 +27,7 @@ test_language = 'test'
 test_user_id = 1
 
 # creating test update book
-test_id = 1,
+test_id = 1
 test_update_first_name = 'U test'
 test_update_surname = 'U test'
 test_update_title ='U test'
@@ -35,9 +35,8 @@ test_update_pages =123456
 test_update_language = 'U test'
 test_update_user_id = 1
 
-
-		# creating a test rating
-test_id = 1,
+# creating a test rating
+test_id = 1
 test_rating = 2
 test_comment = 'test'
 test_user_id = 1
@@ -104,11 +103,11 @@ class TestBase(LiveServerTestCase):
 		response = urlopen("http://localhost:5000")
 		self.assertEqual(response.code, 200)
 
+		# test to register
 class TestRegistration(TestBase):
 	def test_registration(self):
 		# Click register menu link
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[2]').click()
-		time.sleep(1)
 
 		# Fill in registration form
 		self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_admin_email)
@@ -122,6 +121,7 @@ class TestRegistration(TestBase):
 		# Assert that browser redirects to login page
 		assert url_for('login') in self.driver.current_url
 
+		# test for logging in	 
 class TestLogin(TestBase):
 	def test_login(self):
 		self.driver.find_element_by_xpath("/html/body/div[1]/a[2]").click()
@@ -136,6 +136,7 @@ class TestLogin(TestBase):
 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 		time.sleep(1)
 
+		# redirect to the page	 
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
 		time.sleep(1)
 
@@ -145,6 +146,7 @@ class TestLogin(TestBase):
 		time.sleep(2)
 		assert url_for('main_lib') in self.driver.current_url
 
+		# test entering a new book 
 class Test_new_entry(TestBase):
 	def test_new_entry(self):
 		self.driver.find_element_by_xpath("/html/body/div[1]/a[2]").click()
@@ -159,6 +161,7 @@ class Test_new_entry(TestBase):
 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 		time.sleep(1)
 
+		# redirect to the page
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
 		time.sleep(1)
 
@@ -166,6 +169,7 @@ class Test_new_entry(TestBase):
 		self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(test_admin_password)
 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 		time.sleep(2)
+		assert url_for('main_lib') in self.driver.current_url
 
 		# Click new entry
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[2]').click()
@@ -180,8 +184,9 @@ class Test_new_entry(TestBase):
 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 		time.sleep(3)
 		# Assert that browser redirects to main page
-		# assert url_for('main_lib') in self.driver.current_url
+		assert url_for('main_lib') in self.driver.current_url
 
+		# test entering a new rating 
 	def test_rate(self):
 		self.driver.find_element_by_xpath("/html/body/div[1]/a[2]").click()
 		time.sleep(1)
@@ -195,6 +200,7 @@ class Test_new_entry(TestBase):
 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 		time.sleep(1)
 
+		# redirect to the page
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[1]').click()
 		time.sleep(1)
 
@@ -203,11 +209,13 @@ class Test_new_entry(TestBase):
 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 		time.sleep(2)
 
-		# Click new entry
+		assert url_for('main_lib') in self.driver.current_url
+
+		# Click new rate
 		self.driver.find_element_by_xpath('/html/body/div[1]/a[3]').click()
 		assert url_for("rate") in self.driver.current_url
 		time.sleep(3)
-		# Fill in new entry form
+		# Fill in new rate form
 		self.driver.find_element_by_xpath('//*[@id="rating"]').send_keys(2)
 		self.driver.find_element_by_xpath('//*[@id="comment"]').send_keys('test')
 		self.driver.find_element_by_xpath('//*[@id="submit"]').click()
