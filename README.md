@@ -83,7 +83,7 @@ This release all user stories have been completed apart from one Front-End child
 
 ## Database Structure
 
-A basic Entry Relation Diagram (ERD) was created to illustrate the relationship between the tables and to **satisfy the brief**  **model the**** relationship.** As seen below there are 3 main tables. The most important are the book-lib and main\_lib tables because part of the brief was to must create 2 different entities with a different relationship. This is satisfied here because book\_lib has a 0 to many relationships to main\_lib, as there can be many books, but
+A basic Entry Relation Diagram (ERD) was created to illustrate the relationship between the tables and to **satisfy the brief**  **model the**** relationship.** As seen below there are 3 main tables. The most important are the book-lib and main\_lib tables because part of the brief was to must create 2 different entities with a different relationship. 
 
 ![Litary - ERD (6)](https://user-images.githubusercontent.com/45181318/89758504-e0a9ad80-dadf-11ea-90e4-c54157f0deff.png)
 
