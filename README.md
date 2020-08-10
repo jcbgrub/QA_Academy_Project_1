@@ -91,7 +91,9 @@ A basic Entry Relation Diagram (ERD) was created to illustrate the relationship 
 
 Below is the CI pipeline used for this project and includes the relationships between each tool and the frameworks used to create the app, perform sufficient tests and the deployment of the app and illustrated **how the requirements were satisfied.** Code was developed in python and pushed to Git hub using GIT which corresponded with Jira our project tracking app on which segments of code were related to which task. Next via the webhook Jenkins was informed which triggered automated testing of the code via pytest. If passed Jenkins triggered a build which send the updated testing via GCP (host) and flask (framework) to the live environment, while the dev continued to dynamically test using GC/Flask in python until the code was bug free.
 
-![pytest](https://user-images.githubusercontent.com/45181318/89758234-3893e480-dadf-11ea-9996-2b705bbf29a6.png)
+
+![PI1](https://user-images.githubusercontent.com/45181318/89758583-12227900-dae0-11ea-9e11-32b253a595df.png)
+
 
 
 **Testing**
