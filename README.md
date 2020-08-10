@@ -30,19 +30,13 @@ Litary - A library management web app to organise a personal literature library
 ## Resources:
 
 - [Jira Board](https://jacobhpgrub.atlassian.net/jira/software/projects/LQA/boards/4)
-# 1
 - [Presentation](https://docs.google.com/presentation/d/1tmI6CsPoRDrYkRan2wcBzMjVTFV2sa-NJym296z4DCE/edit)
-# 2
 - [Literary Website](http://35.246.16.109:5000/)
-# 3
 - [Github](https://github.com/jcbgrub/increment)
-# 4
 
 ## Requirements
 
-The basic requirements set by the academy are to: &#39;To create a CRUD application with utilisation of supporting tools, methodologies and technologies that encapsulate all core modules covered during training.&#39;
-# 5
- In more detail this means that the entire project requires the following features and structures:
+The basic requirements set by the academy are to: &#39;To create a CRUD application with utilisation of supporting tools, methodologies and technologies that encapsulate all core modules covered during training.&#39; In more detail this means that the entire project requires the following features and structures:
 
 - A project tracking board with full expansion on user stories, use cases and tasks needed to complete the project.
 
@@ -85,25 +79,26 @@ Jira was the chosen method when planning the project and tracking the progress *
 
 This release all user stories have been completed apart from one Front-End child, due to time constrains. This will be transferred backlog and completed in the next sprint.
 
-![](RackMultipart20200810-4-x8lbkc_html_6df7be627dd75211.png)
+![Screenshot 2020-08-10 at 07 59 49](https://user-images.githubusercontent.com/45181318/89758367-81e43400-dadf-11ea-8f5b-fccf79e568e0.png)
 
 ## Database Structure
 
 A basic Entry Relation Diagram (ERD) was created to illustrate the relationship between the tables and to **satisfy the brief**  **model the**** relationship.** As seen below there are 3 main tables. The most important are the book-lib and main\_lib tables because part of the brief was to must create 2 different entities with a different relationship. This is satisfied here because book\_lib has a 0 to many relationships to main\_lib, as there can be many books, but
 
-![](RackMultipart20200810-4-x8lbkc_html_d3c7e0d5ad6d8998.png)
+![Litary - ERD (6)](https://user-images.githubusercontent.com/45181318/89758504-e0a9ad80-dadf-11ea-90e4-c54157f0deff.png)
 
 **Continuous Integration**
 
 Below is the CI pipeline used for this project and includes the relationships between each tool and the frameworks used to create the app, perform sufficient tests and the deployment of the app and illustrated **how the requirements were satisfied.** Code was developed in python and pushed to Git hub using GIT which corresponded with Jira our project tracking app on which segments of code were related to which task. Next via the webhook Jenkins was informed which triggered automated testing of the code via pytest. If passed Jenkins triggered a build which send the updated testing via GCP (host) and flask (framework) to the live environment, while the dev continued to dynamically test using GC/Flask in python until the code was bug free.
 
-![](RackMultipart20200810-4-x8lbkc_html_b0db644c3507ed30.png)
+![pytest](https://user-images.githubusercontent.com/45181318/89758234-3893e480-dadf-11ea-9996-2b705bbf29a6.png)
+
 
 **Testing**
 
 The tools used for testing the application was Pytest when conducting unit tests, while selenium was used while performing integration tests. **The requirement was reach to the 78% coverage report.** While a total coverage of 78% percent was reached there was a fundamental problem with the integration tests which continued to fail. This is due to the registration and login xpaths of the HTML website which selenium was unable to find when following the main syntax offered on the QA Academy portal (Community).
 
-![](RackMultipart20200810-4-x8lbkc_html_e79005abb9d32366.png)
+![Screenshot 2020-08-10 at 07 27 25](https://user-images.githubusercontent.com/45181318/89758300-60834800-dadf-11ea-948e-8c1b1e0fcf9b.png)
 
 **Risk Assessment**
 
