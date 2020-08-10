@@ -97,7 +97,7 @@ class Testadding(TestBase):
 			self.assertEqual(response.status_code, 200)
 
 	def test_rate(self):
-	# Test that when I add a new book, I am redirected to the homepage with the new post visible - ADMIN
+	# Test that when I add a new rating, I am redirected to the homepage with the new post visible - ADMIN
 		with self.client:
 			self.client.post(url_for('login'), data=dict(email='admin@admin.com',password='admin2016'),follow_redirects=True)
 			response = self.client.post(
@@ -130,7 +130,8 @@ class Testadding(TestBase):
 # 				follow_redirects=True
 # 			)
 # 			self.assertIn(b'Test update Title',response.data)
-# 			self.assertEqual(response.status_code, 200)
+		# self.assertEqual(response.status_code, 200)
+		# testing app
 
 
 # testing to delete entries.
